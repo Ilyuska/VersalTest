@@ -1,0 +1,24 @@
+import React from "react";
+import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Main from "./pages/Main";
+import { AuthContext } from "./context/index";
+
+const App = () => {
+  const [isAuth, setIsAuth] = useState(false);
+
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuth,
+        setIsAuth,
+      }}
+    >
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>
+    </AuthContext.Provider>
+  );
+};
+
+export default App;
