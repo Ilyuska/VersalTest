@@ -11,6 +11,9 @@ export default {
         mainGreen: "#4E674F",
         mainGray: "#393939", //for Header & Footer
       },
+      boxShadow: {
+        "3xl": "0px 0px 10px 0px rgba(0, 0, 0, 0.5);",
+      },
     },
   },
   plugins: [],
