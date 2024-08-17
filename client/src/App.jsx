@@ -1,8 +1,9 @@
-import React from "react";
 import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
-import Main from "./pages/Main";
 import { AuthContext } from "./context/index";
+import AppRoutes from "./components/routes/AppRoutes";
+import Footer from "./components/Loyout/Footer";
+import Header from "./components/Loyout/Header";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -15,7 +16,9 @@ const App = () => {
       }}
     >
       <BrowserRouter>
-        <Main />
+        <Header />
+        <AppRoutes />
+        <Footer />
       </BrowserRouter>
     </AuthContext.Provider>
   );
