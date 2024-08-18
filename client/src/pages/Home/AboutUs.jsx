@@ -39,9 +39,9 @@ const AboutUs = () => {
   return (
     <div>
       <MyTitle>О нас</MyTitle>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-between">
         <img src={about} alt="" className="hidden md:block" />
-        <div className="px-8 md:my-0 md:w-1/2 md:px-20">
+        <div className="px-8 md:my-0 md:w-1/2">
           <span className="font-bold">ВЕРСАЛЬ КЕЙТЕРИНГ</span> - это ресторан
           высококачественного выездного обслуживания! Мы работаем на территории
           Перми и Пермского края с 2010 года.
@@ -51,7 +51,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-y-6 md:grid-cols-5 my-20">
+      <div className="grid grid-cols-2 gap-y-6 md:flex md:justify-between my-20">
         {formochki.map((i) => (
           <AboutFormochka pict={i.pict} title={i.title} text={i.text} />
         ))}

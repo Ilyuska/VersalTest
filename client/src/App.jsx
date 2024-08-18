@@ -7,6 +7,7 @@ import Header from "./components/Loyout/Header";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
+  const [isMainPage, setIsMainPage] = useState(!isAuth);
 
   return (
     <AuthContext.Provider
@@ -16,9 +17,7 @@ const App = () => {
       }}
     >
       <BrowserRouter>
-        <Header />
         <AppRoutes />
-        <Footer />
       </BrowserRouter>
     </AuthContext.Provider>
   );

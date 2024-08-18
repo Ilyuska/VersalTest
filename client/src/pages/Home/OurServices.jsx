@@ -47,9 +47,16 @@ const OurServices = () => {
   return (
     <>
       <MyTitle>Наши услуги</MyTitle>
-      <div className="grid grid-cols-2 md:grid-cols-4">
-        {services.map((i) => (
-          <ServicesFormochka title={i.title} text={i.text} pict={i.pict} />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {services.map((i, index) => (
+          <div
+            key={index}
+            className={`${
+              index % 2 === 0 ? "justify-self-start" : "justify-self-end"
+            } md:justify-self-auto`}
+          >
+            <ServicesFormochka title={i.title} text={i.text} pict={i.pict} />
+          </div>
         ))}
       </div>
     </>

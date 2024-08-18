@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context";
 import MyButton from "../components/UI/MyButton";
 
-const Menu = () => {
+const Admin = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const exit = () => {
     console.log("Вы вышли");
@@ -11,10 +11,10 @@ const Menu = () => {
   };
   return (
     <>
-      <div>User</div>
+      <div>Admin</div>
       <MyButton click={exit}>ВЫЙТИ</MyButton>
     </>
   );
 };
 
-export default Menu;
+export default Admin;
