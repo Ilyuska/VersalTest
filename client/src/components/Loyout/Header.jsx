@@ -1,4 +1,5 @@
 import video from "../../assets/video/video.mp4";
+
 import MyNavBar from "./MyNavBar";
 import MyLoginForm from "../UI/MyLoginForm";
 
@@ -21,6 +22,7 @@ const Header = ({ isMainPage }) => {
         <></>
       )}
       <MyNavBar />
+
       {isMainPage ? (
         <div className="absolute h-[85%] flex justify-center md:justify-between items-center top-[15%] text-white px-[10%]">
           <div className="hidden text-xl md:block w-1/2">

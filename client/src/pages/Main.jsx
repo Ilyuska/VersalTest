@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/index";
 import Home from "./Home/Home";
-import Menu from "./Menu";
+import Menu from "./Menu/Menu";
 import Admin from "./Admin";
 
 const Main = () => {

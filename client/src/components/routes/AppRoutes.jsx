@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
 import Main from "../../pages/Main";
-import Menu from "../../pages/Menu";
-import Cart from "../../pages/Cart";
+import Menu from "../../pages/Menu/Menu";
+import Cart from "../../pages/Menu/Cart";
 import About from "../../pages/NavBar/About";
 import Services from "../../pages/NavBar/Services";
 import Projects from "../../pages/NavBar/Projects";
