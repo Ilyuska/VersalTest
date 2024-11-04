@@ -8,7 +8,7 @@ const MyButton = ({ children, click, ...props }) => {
     <button
       {...props}
       onClick={buttonClick}
-      className="w-11/12 bg-mainGreen text-white  rounded-xl hover:scale-90"
+      className="w-11/12 bg-mainGreen text-white  rounded-xl hover:scale-95"
     >
       {children}
     </button>

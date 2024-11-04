@@ -1,11 +1,11 @@
-import logo from "../../assets/img/Loyout/Logo.png";
 import { NavLink } from "react-router-dom";
 import MyImgInLine from "../UI/MyImgInLine";
-import phone from "../../assets/img/Loyout/phone.png";
-import mail from "../../assets/img/Loyout/mail.png";
-import inst from "../../assets/img/Loyout/instagram.png";
-import tg from "../../assets/img/Loyout/tg.png";
-import vk from "../../assets/img/Loyout/vk.png";
+import logo from "../../assets/img/Header/Logo.png";
+import phone from "../../assets/img/Footer/phone.png";
+import mail from "../../assets/img/Footer/mail.png";
+import inst from "../../assets/img/Footer/instagram.png";
+import tg from "../../assets/img/Footer/tg.png";
+import vk from "../../assets/img/Footer/vk.png";
 
 const Footer = () => {
   return (
@@ -40,11 +40,8 @@ const Footer = () => {
       <div className="flex justify-around md:w-7/12 ">
         <div className="flex flex-col  md:w-2/3">
           <div className="font-bold text-[18px] mb-3">Полезные ссылки</div>
-          <NavLink to="/aboutus" className="md:mr-3 mb-1 md:mb-2">
-            О нас
-          </NavLink>
-          <NavLink to="/services" className="md:mr-3 mb-1 md:mb-2">
-            Наши услуги
+          <NavLink to="/menu" className="md:mr-3 mb-1 md:mb-2">
+            Заказать банкет
           </NavLink>
           <NavLink to="/projects" className="md:mr-3 mb-1 md:mb-2">
             Наши проекты

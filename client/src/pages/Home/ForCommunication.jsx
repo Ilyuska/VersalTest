@@ -1,7 +1,11 @@
 import { useState } from "react";
-import MyInput from "../../components/UI/MyInput";
-import MyTextArea from "../../components/UI/MyTextArea";
-import MyButton from "../../components/UI/MyButton";
+import MyInput from "@/components/UI/MyInput";
+import MyTextArea from "@/components/UI/MyTextArea";
+import MyButton from "@/components/UI/MyButton";
+import MyImgInLine from "@/components/UI/MyImgInLine";
+import mail from "@/assets/img/Footer/mail.png";
+import phone from "@/assets/img/Footer/phone.png";
+import bg from "@/assets/img/ForCommuniction/ForCommuniction.png";
 
 const ForCommunication = () => {
   const [forma, setForma] = useState({
@@ -22,27 +26,42 @@ const ForCommunication = () => {
   };
 
   return (
-    <div className="flex bg-mainGray py-10 px-8">
-      <div className="w-1/2 hidden md:block">
-        <div className="text-white text-4xl font-bold mb-10">
-          Свяжитесь с нами
+    <div
+      className="flex py-10 px-8 mt-20 "
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100%", // Полная высота экрана
+      }}
+    >
+      <div className="w-1/2 hidden md:block text-white">
+        <div className="text-4xl font-bold mb-10">Свяжитесь с нами</div>
+        <div className="text-lg mb-10 w-5/6">
+          «Версаль Кейтериг» - член Ассоциации Кейтерингов и Банкетных служб, а
+          так же кейтериг номер в Перми и Пермском крае.
         </div>
-        <div className="text-white text-lg mb-10 w-5/6">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Necessitatibus, rerum quas ullam tempore fugiat inventore eaque
-          laborum.
-        </div>
-        <div>
+        <div className="mb-10 ">
           <div>ТЕЛЕФОН</div>
-          <div>88005553535</div>
+          <MyImgInLine
+            properties="h-7 text-xl my-1"
+            pict={phone}
+            typee="tel:+73422250636"
+            content="+7(342)2250636"
+          />
         </div>
         <div>
           <div>ПОЧТА</div>
-          <div>scam@mail.ru</div>
+          <MyImgInLine
+            properties="h-7 text-xl my-1"
+            pict={mail}
+            typee="mailto:info@permbanket.ru"
+            content="info@permbanket.ru"
+          />
         </div>
       </div>
-      <form className="flex flex-col w-full md:w-1/2 items-center gap-y-5">
-        <div className="text-white text-2xl font-medium text-center md:hidden">
+      <form className="flex flex-col w-full md:w-1/2 items-center gap-y-5 bg-black py-7 rounded-3xl bg-opacity-40">
+        <div className=" text-white text-2xl font-medium text-center md:hidden">
           Свяжитесь с нами
         </div>
         <MyInput
@@ -65,7 +84,9 @@ const ForCommunication = () => {
           value={forma.comment}
           onChange={(e) => setForma({ ...forma, comment: e.target.value })}
         />
-        <MyButton click={submit}>Отправить</MyButton>
+        <div className="h-12 flex justify-center w-full">
+          <MyButton click={submit}>Отправить</MyButton>
+        </div>
       </form>
     </div>
   );

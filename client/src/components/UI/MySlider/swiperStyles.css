@@ -1,0 +1,36 @@
+//Кастомизация стрелок
+.swiper-button-next,
+.swiper-button-prev {
+  color: #4e674f;
+  width: 50px;
+  height: 50px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #393939;
+}
+
+/* Окружение слайдера */
+.swiper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-bottom: 40px; /* Отступ под точки пагинации */
+}
+
+/* Позиционирование точек пагинации */
+.custom-swiper .swiper-pagination {
+  position: relative;
+
+  /* Добавляем отступ сверху */
+}
+
+.swiper-pagination-bullet {
+  background-color: #4e674f;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #393939;
+}

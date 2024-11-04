@@ -1,10 +1,10 @@
 import React from "react";
 
-import Item from "../../components/UI/Item";
+import Item from "./Item";
 
 const MenuItems = ({ menuItems, addToCart, delFromCart }) => {
   return (
-    <div className="grid mx-[10%] grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+    <div className="mx-[10%] grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-8">
       {menuItems.map((i, index) => (
         <Item
           info={i}

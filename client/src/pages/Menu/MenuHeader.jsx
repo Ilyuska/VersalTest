@@ -1,4 +1,4 @@
-import Logo from "../../assets/img/Loyout/Logo.png";
+import Logo from "../../assets/img/Header/Logo.png";
 import Cart from "../../assets/img/Menu/Cart.png";
 import Profile from "../../assets/img/Menu/Profile.png";
 import MyInput from "../../components/UI/MyInput";

@@ -1,11 +1,15 @@
 import { useState, useContext } from "react";
+import { AuthContext } from "../../context/index";
 import MyButton from "./MyButton";
 import MyInput from "./MyInput";
-import { AuthContext } from "../../context/index";
+import MyRegisterForm from "./MyRegisterForm";
+import MyModalWindow from "./MyModalWindow";
 
 const MyLoginForm = (props) => {
-  const [info, setLogin] = useState({ login: "", password: "" });
+  const [info, setLogin] = useState({ login: "" });
   const { isAuth, setIsAuth } = useContext(AuthContext);
+
+  const [isRegModal, setRegModal] = useState(false);
 
   const login = () => {
     console.log(info);
@@ -19,20 +23,21 @@ const MyLoginForm = (props) => {
   return (
     <>
       <form {...props}>
+        <div className="text-2xl font-thin ">Войти в аккаунт</div>
         <MyInput
           placeholder="Логин"
           value={info.login}
           onChange={(e) => setLogin({ ...info, login: e.target.value })}
         ></MyInput>
-        <MyInput
-          placeholder="Пароль"
-          type="password"
-          value={info.password}
-          onChange={(e) => setLogin({ ...info, password: e.target.value })}
-        ></MyInput>
-        <MyButton click={login}>Войти</MyButton>
-        <div>Регистрация</div>
-        <div>Забыли пароль?</div>
+        <div className="h-10 flex justify-center w-full">
+          <MyButton click={login}>Войти</MyButton>
+        </div>
+        <div onClick={() => setRegModal(true)} className="cursor-pointer">
+          Регистрация
+        </div>
+        <MyModalWindow status={isRegModal} setStatus={setRegModal}>
+          <MyRegisterForm className="p-5 flex flex-col gap-7 items-center justify-around bg-black bg-opacity-50 rounded-xl" />
+        </MyModalWindow>
       </form>
     </>
   );
