@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "./context/index";
-import AppRoutes from "./components/routes/AppRoutes";
+import AppRoutes from "./routes/AppRoutes";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
-  const [isMainPage, setIsMainPage] = useState(!isAuth);
 
   return (
     <AuthContext.Provider

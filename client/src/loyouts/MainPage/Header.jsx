@@ -1,8 +1,8 @@
-import video from "../../assets/video/video.mp4";
-import hart from "../../assets/img/Header/hart.png";
+import video from "@/assets/video/video.mp4";
+import hart from "@/assets/img/Header/hart.png";
 
 import MyNavBar from "./MyNavBar";
-import MyLoginForm from "../UI/MyLoginForm";
+import MyLoginForm from "@/components/UI/MyLoginForm";
 
 const Header = ({ isMainPage, ...props }) => {
   return (

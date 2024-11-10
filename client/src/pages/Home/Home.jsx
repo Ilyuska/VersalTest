@@ -1,15 +1,17 @@
+import { useEffect } from "react";
 import AboutUs from "./AboutUs/AboutUs";
 import OurServices from "./OurServices/OurServices";
 import OurTrusts from "./OurTrusts/OurTrusts";
 import OurProjects from "./OurProjects/OurProjects";
 import ForCommunication from "./ForCommunication";
-import Footer from "@/components/Loyout/Footer";
-import Header from "@/components/Loyout/Header";
 
-const Home = () => {
+const Home = ({ setIsMainPage }) => {
+  useEffect(() => {
+    setIsMainPage(true);
+  }, [setIsMainPage]);
+
   return (
     <>
-      <Header isMainPage={true} />
       <div className="px-[7%] ">
         <AboutUs />
         <OurServices />
@@ -17,7 +19,6 @@ const Home = () => {
         <OurTrusts />
       </div>
       <ForCommunication />
-      <Footer />
     </>
   );
 };

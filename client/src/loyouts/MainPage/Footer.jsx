@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-import MyImgInLine from "../UI/MyImgInLine";
-import logo from "../../assets/img/Header/Logo.png";
-import phone from "../../assets/img/Footer/phone.png";
-import mail from "../../assets/img/Footer/mail.png";
-import inst from "../../assets/img/Footer/instagram.png";
-import tg from "../../assets/img/Footer/tg.png";
-import vk from "../../assets/img/Footer/vk.png";
+import MyImgInLine from "@/components/UI/MyImgInLine";
+import logo from "@/assets/img/Header/Logo.png";
+import phone from "@/assets/img/Footer/phone.png";
+import mail from "@/assets/img/Footer/mail.png";
+import inst from "@/assets/img/Footer/instagram.png";
+import tg from "@/assets/img/Footer/tg.png";
+import vk from "@/assets/img/Footer/vk.png";
 
 const Footer = () => {
   return (

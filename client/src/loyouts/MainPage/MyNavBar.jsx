@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ROUTES } from "../../utils/routes";
+import { ROUTES } from "@/utils/routes";
 import logo from "@/assets/img/Header/Logo.png";
 import phone from "@/assets/img/Footer/phone.png";
 import enter from "@/assets/img/Header/enter.png";
 import burger from "@/assets/img/Header/burger_menu.png";
-import MyImgInLine from "../UI/MyImgInLine";
-import MyBurgerMenu from "../UI/MyBurgerMenu";
-import MyModalWindow from "../UI/MyModalWindow";
-import MyLoginForm from "../UI/MyLoginForm";
+import MyImgInLine from "@/components/UI/MyImgInLine";
+import MyBurgerMenu from "@/components/UI/MyBurgerMenu";
+import MyModalWindow from "@/components/UI/MyModalWindow";
+import MyLoginForm from "@/components/UI/MyLoginForm";
 
 const MyNavBar = () => {
   const [isBurgerStatus, setBurgerStatus] = useState(false);

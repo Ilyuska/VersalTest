@@ -1,12 +1,15 @@
-import React from "react";
-import Header from "../../../components/Loyout/Header";
-import Footer from "../../../components/Loyout/Footer";
-import MyTitle from "../../../components/UI/MyTitle";
+import { useEffect } from "react";
+import MyTitle from "@/components/UI/MyTitle";
 import Formochka from "./Formochka";
-import image from "../../../assets/img/Header/Contacts.png";
-import worker from "../../../assets/img/Contacts/worker.jpg";
+import image from "@/assets/img/Header/Contacts.png";
+import worker from "@/assets/img/Contacts/worker.jpg";
 
-const Contacts = () => {
+const Contacts = ({ setIsMainPage, setHeaderPict }) => {
+  useEffect(() => {
+    setIsMainPage(false);
+    setHeaderPict({ pict: image, discription: "Контакты" });
+  }, [setIsMainPage, setHeaderPict]);
+
   const workers = [
     {
       name: "Белин Дмитрий Владимирович",
@@ -37,7 +40,6 @@ const Contacts = () => {
 
   return (
     <>
-      <Header isMainPage={false} pict={image} discription="Контакты" />
       <MyTitle>Наши контакты</MyTitle>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-10 px-[7%] mb-20 ">
         {workers.map((i) => (
@@ -49,8 +51,6 @@ const Contacts = () => {
           />
         ))}
       </div>
-
-      <Footer />
     </>
   );
 };
