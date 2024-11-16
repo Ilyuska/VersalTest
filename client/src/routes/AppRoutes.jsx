@@ -8,7 +8,10 @@ import Menu from "@/pages/Menu/Menu";
 import OurProjects from "@/pages/NavBar/OurProjects";
 import Trusts from "@/pages/NavBar/Trusts";
 import Contacts from "@/pages/NavBar/Contacts/Contacts";
-import Admin from "@/pages/AdminPanel/Admin";
+import AdminLoyout from "../loyouts/AdminPage/AdminLoyout";
+import AdminMenu from "@/pages/AdminPanel/AdminMenu/AdminMenu";
+import AdminOrders from "@/pages/AdminPanel/AdminOrders/AdminOrders";
+import AdminUsers from "@/pages/AdminPanel/AdminUsers/AdminUsers";
 
 const AppRoutes = () => {
   const [isMainPage, setIsMainPage] = useState(true);
@@ -58,7 +61,11 @@ const AppRoutes = () => {
         {/* <Route path="/cart" element={<Cart setIsMainPage={setIsMainPage} setHeaderPict={setHeaderPict}/>} /> */}
       </Route>
       <Route path="/menu" element={<Menu />} />
-      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin" element={<AdminLoyout />}>
+        <Route path="/admin/menu" element={<AdminMenu />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+      </Route>
     </Routes>
   );
 };

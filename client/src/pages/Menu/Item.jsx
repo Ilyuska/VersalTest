@@ -34,7 +34,7 @@ const Item = ({ info, addToCart, delFromCart }, ...props) => {
         </div>
         <div className="flex  gap-1">
           <div className="w-1/3 flex items-center justify-cente font-bold  text-xl md:text-3xl">
-            {info.price}P
+            {info.price}₽
           </div>
           {info.count == 0 ? (
             <div

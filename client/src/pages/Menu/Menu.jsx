@@ -5,7 +5,7 @@ import MenuHeader from "./MenuHeader";
 import Sort from "./Sort";
 import Filter from "./Filter";
 import MenuItems from "./MenuItems";
-import menuItems from "./MenuItemsAPI";
+import menuItems from "@/api/TempAPI/Menu/MenuItemsAPI";
 
 const Menu = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext);

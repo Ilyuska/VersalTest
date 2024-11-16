@@ -15,13 +15,7 @@ const Main = () => {
   }, []);
   return (
     <>
-      {!isAuth ? (
-        <Home />
-      ) : localStorage.getItem("auth") === "admin" ? (
-        <Admin />
-      ) : (
-        <Menu />
-      )}
+      <Home />
     </>
   );
 };
