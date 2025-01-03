@@ -5,10 +5,10 @@ import OurTrusts from "./OurTrusts/OurTrusts";
 import OurProjects from "./OurProjects/OurProjects";
 import ForCommunication from "./ForCommunication";
 
-const Home = ({ setIsMainPage }) => {
+const Home = ({ setHeaderSettings }) => {
   useEffect(() => {
-    setIsMainPage(true);
-  }, [setIsMainPage]);
+    setHeaderSettings({ page: "main", pict: "", discription: "" });
+  }, [setHeaderSettings]);
 
   return (
     <>

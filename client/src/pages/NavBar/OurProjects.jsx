@@ -6,11 +6,14 @@ import Formochka from "../Home/OurProjects/Formochka";
 //tempApi
 import Projects from "@/api/TempAPI/OurProjects/OurProjects";
 
-const OurProjects = ({ setIsMainPage, setHeaderPict }) => {
+const OurProjects = ({ setHeaderSettings }) => {
   useEffect(() => {
-    setIsMainPage(false);
-    setHeaderPict({ pict: image, discription: "Наши проекты" });
-  }, [setIsMainPage, setHeaderPict]);
+    setHeaderSettings({
+      page: "information",
+      pict: image,
+      discription: "Наши проекты",
+    });
+  }, [setHeaderSettings]);
 
   return (
     <>

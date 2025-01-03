@@ -55,18 +55,23 @@ const Footer = () => {
         </div>
         <div className=" md:w-1/3 ">
           <div className="font-bold text-[18px] mb-3">Контакты</div>
-          <MyImgInLine
-            properties="h-5 text-[0.9rem]  md:h-6   mb-1 md:mb-2"
-            pict={phone}
-            typee="tel:+73422250636"
-            content="+7(342)2250636"
-          />
-          <MyImgInLine
-            properties="h-5 text-[0.9rem] md:h-5  mb-1 md:mb-2"
-            pict={mail}
-            typee="mailto:info@permbanket.ru"
-            content="info@permbanket.ru"
-          />
+          <div className="flex">
+            <MyImgInLine
+              properties="h-5 text-[0.9rem]  md:h-6   mb-1 md:mb-2"
+              pict={phone}
+              typee="tel:+73422250636"
+              content="+7(342)2250636"
+            />
+          </div>
+          <div className="flex">
+            <MyImgInLine
+              properties="h-5 text-[0.9rem] md:h-5  mb-1 md:mb-2"
+              pict={mail}
+              typee="mailto:info@permbanket.ru"
+              content="info@permbanket.ru"
+            />
+          </div>
+
           <div className="flex md:hidden">
             <MyImgInLine
               properties="h-5 text-[1rem]  md:h-6 mb-1 md:mb-2"

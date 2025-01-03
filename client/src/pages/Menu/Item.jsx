@@ -1,24 +1,6 @@
-import { useState } from "react";
-import MyButton from "../../components/UI/MyButton";
 import pict from "../../pages/Menu/temp.png";
 
-const Item = ({ info, addToCart, delFromCart }, ...props) => {
-  const add = () => {
-    addToCart(info);
-  };
-
-  const del = () => {
-    delFromCart(info);
-  };
-
-  // const truncateStyle = {
-  //   display: "-webkit-box",
-  //   WebkitLineClamp: 2,
-  //   WebkitBoxOrient: "vertical",
-  //   overflow: "hidden",
-  //   textOverflow: "ellipsis",
-  // };
-
+const Item = ({ info, addToCart, delFromCart }) => {
   return (
     <div className="flex flex-col items-center justify-between">
       <div className="h-3/4 w-full">
@@ -38,24 +20,17 @@ const Item = ({ info, addToCart, delFromCart }, ...props) => {
           </div>
           {info.count == 0 ? (
             <div
-              className="w-2/3 flex items-center justify-center text-base md:text-xl font-semibold  text-white bg-mainGreen rounded-2xl"
-              onClick={add}
+              className="w-2/3 flex items-center justify-center text-base md:text-xl font-semibold  text-white bg-mainGreen rounded-2xl hover:scale-95 cursor-pointer"
+              onClick={() => addToCart(info)}
             >
               В корзину
             </div>
           ) : (
-            <div className="w-2/3 flex items-center justify-center text-center border-2 rounded-xl">
-              <div className="w-1/4 cursor-pointer" onClick={del}>
-                -
-              </div>
-              <input
-                type="text"
-                className="w-1/2 text-center  border-x-2"
-                value={info.count}
-              />
-              <div className="w-1/4 cursor-pointer" onClick={add}>
-                +
-              </div>
+            <div
+              className="w-2/3 flex items-center justify-center text-center text-base font-semibold rounded-2xl bg-black bg-opacity-20 hover:scale-95 cursor-pointer"
+              onClick={() => delFromCart(info.id)}
+            >
+              Добавлено
             </div>
           )}
         </div>

@@ -2,14 +2,10 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const MainLoyout = ({ isMainPage, ...props }) => {
+const MainLoyout = ({ settings }) => {
   return (
     <>
-      <Header
-        isMainPage={isMainPage}
-        pict={props.pict}
-        discription={props.discription}
-      />
+      <Header settings={settings} />
       <Outlet />
       <Footer />
     </>

@@ -41,43 +41,50 @@ const ForCommunication = () => {
           «Версаль Кейтериг» - член Ассоциации Кейтерингов и Банкетных служб, а
           так же кейтериг номер в Перми и Пермском крае.
         </div>
-        <div className="mb-10 ">
+        <div className="mb-10">
           <div>ТЕЛЕФОН</div>
-          <MyImgInLine
-            properties="h-7 text-xl my-1"
-            pict={phone}
-            typee="tel:+73422250636"
-            content="+7(342)2250636"
-          />
+          <div className="flex">
+            <MyImgInLine
+              properties="h-7 text-xl my-1"
+              pict={phone}
+              typee="tel:+73422250636"
+              content="+7(342)2250636"
+            />
+          </div>
         </div>
         <div>
           <div>ПОЧТА</div>
-          <MyImgInLine
-            properties="h-7 text-xl my-1"
-            pict={mail}
-            typee="mailto:info@permbanket.ru"
-            content="info@permbanket.ru"
-          />
+          <div className="flex">
+            <MyImgInLine
+              properties=" h-7 text-xl my-1"
+              pict={mail}
+              typee="mailto:info@permbanket.ru"
+              content="info@permbanket.ru"
+            />
+          </div>
         </div>
       </div>
-      <form className="flex flex-col w-full md:w-1/2 items-center gap-y-5 bg-black py-7 rounded-3xl bg-opacity-40">
-        <div className=" text-white text-2xl font-medium text-center md:hidden">
+      <form className="flex flex-col w-full md:w-1/2 items-center gap-y-5 bg-black py-7 rounded-3xl bg-opacity-40 text-white">
+        <div className="  text-2xl font-medium text-center md:hidden">
           Свяжитесь с нами
         </div>
         <MyInput
           placeholder="Ваше имя"
           value={forma.name}
           onChange={(e) => setForma({ ...forma, name: e.target.value })}
+          className="w-11/12"
         />
         <MyInput
           placeholder="Ваш телефон"
           value={forma.tel}
           onChange={(e) => setForma({ ...forma, tel: e.target.value })}
+          className="w-11/12"
         />
         <MyInput
           placeholder="Ваша почта"
           value={forma.mail}
           onChange={(e) => setForma({ ...forma, mail: e.target.value })}
+          className="w-11/12"
         />
         <MyTextArea
           placeholder="Ваш комментарий"

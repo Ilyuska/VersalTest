@@ -1,79 +1,34 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../../context/index";
-import MyButton from "../../components/UI/MyButton";
-import MenuHeader from "./MenuHeader";
+import { useContext, useState, useEffect } from "react";
+import { CartContext } from "@/context/index";
 import Sort from "./Sort";
 import Filter from "./Filter";
 import MenuItems from "./MenuItems";
 import menuItems from "@/api/TempAPI/Menu/MenuItemsAPI";
 
-const Menu = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const exit = () => {
-    console.log("Вы вышли");
-    setIsAuth(false);
-    localStorage.setItem("auth", "");
-  };
+const Menu = ({ setHeaderSettings }) => {
+  const { cart } = useContext(CartContext);
 
   const allMenu = menuItems;
   const [menu, setMenu] = useState(menuItems);
-  const [cart, setCart] = useState(menu.filter((i) => i.count > 0));
   const [selectedSort, setSelectedSort] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("Все");
 
-  const addToCart = (item) => {
-    const cartIndex = cart.findIndex((i) => item.name === i.name);
-    const menuIndex = menu.findIndex((i) => item.name === i.name);
-    if (cartIndex !== -1) {
-      // Копируем массив для безопасного обновления состояния
-      const updatedCart = [...cart];
-      updatedCart[cartIndex] = {
-        ...updatedCart[cartIndex],
-        count: updatedCart[cartIndex].count + 1,
-      };
-      setCart(updatedCart); // Пихаем его обратно после изменения
-    } else {
-      setCart([...cart, { ...item, count: 1 }]);
-    }
-    //Проделываем все то же самое с menu
-    if (menuIndex !== -1) {
-      const updatedMenu = [...menu];
-      updatedMenu[menuIndex] = {
-        ...updatedMenu[menuIndex],
-        count: updatedMenu[menuIndex].count + 1,
-      };
-      setMenu(updatedMenu);
-    }
-    console.log("Добавил", cart);
-  };
+  useEffect(() => {
+    setHeaderSettings({ page: "others", pict: "", discription: "" });
+  }, [setHeaderSettings]);
 
-  const delFromCart = (item) => {
-    const cartIndex = cart.findIndex((i) => item.name === i.name);
-    const menuIndex = menu.findIndex((i) => item.name === i.name);
-    if (cartIndex !== -1) {
-      const updatedCart = [...cart];
-      updatedCart[cartIndex] = {
-        ...updatedCart[cartIndex],
-        count: updatedCart[cartIndex].count - 1,
+  useEffect(() => {
+    const updatedMenu = menu.map((menuItem) => {
+      const cartItem = cart.value.find(
+        (cartItem) => cartItem.id == menuItem.id
+      );
+      return {
+        ...menuItem,
+        count: cartItem ? cartItem.count : 0,
       };
-      if (updatedCart[cartIndex].count === 0) {
-        setCart(updatedCart.filter((i) => i.name !== item.name));
-      } else {
-        setCart(updatedCart);
-      }
-    }
-
-    if (menuIndex !== -1) {
-      const updatedMenu = [...menu]; //Копируем массив для безопасного изменения
-      updatedMenu[menuIndex] = {
-        //В элемент по индексу перезаписываем новый обьект
-        ...updatedMenu[menuIndex], //сохраняя все предыдущие поля
-        count: updatedMenu[menuIndex].count - 1, //кроме поля count, которое мы меняем на новое
-      };
-      setMenu(updatedMenu); //Записываем заново новый массив
-    }
-    console.log("Удалил", cart);
-  };
+    });
+    setMenu(updatedMenu);
+  }, [cart.value]);
 
   const sortMenu = (sort) => {
     setSelectedSort(sort);
@@ -103,7 +58,6 @@ const Menu = () => {
 
   return (
     <>
-      <MenuHeader cart={cart} />
       <div className="my-8 mx-[10%] flex flex-wrap justify-between gap-y-3">
         <Filter
           onClick={filterMenu}
@@ -126,11 +80,9 @@ const Menu = () => {
       </div>
       <MenuItems
         menuItems={menu}
-        // inCart={itemsCart}
-        addToCart={addToCart}
-        delFromCart={delFromCart}
+        addToCart={cart.add}
+        delFromCart={cart.remove}
       />
-      <MyButton click={exit}>ВЫЙТИ</MyButton>
     </>
   );
 };

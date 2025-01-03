@@ -5,7 +5,7 @@ export default {
       screens: {
         sm: "480px",
         md: "768px",
-        lg: "1028px",
+        lg: "1038px",
       },
       colors: {
         mainGreen: "#4E674F",

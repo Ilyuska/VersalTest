@@ -1,4 +1,13 @@
-const FiltersInput = ({ title, type }) => {
+const FiltersInput = ({
+  title,
+  type,
+  value,
+  minValue,
+  maxValue,
+  onChange,
+  onChangeMin,
+  onChangeMax,
+}) => {
   return (
     <>
       {type == "text" ? (
@@ -8,6 +17,8 @@ const FiltersInput = ({ title, type }) => {
             type={type}
             placeholder={title}
             className="border-2 border-mainGray px-2 rounded-md"
+            value={value}
+            onChange={onChange}
           />
         </div>
       ) : (
@@ -18,12 +29,16 @@ const FiltersInput = ({ title, type }) => {
               type="number"
               placeholder="От:"
               className="w-1/3 border-2 border-mainGray pl-2 rounded-md"
+              value={minValue > 0 ? minValue : ""}
+              onChange={onChangeMin}
             />
             <div className="mx-5">-</div>
             <input
               type={type}
               placeholder="До:"
               className="w-1/3 border-2 border-mainGray pl-2 rounded-md"
+              value={maxValue > 0 ? maxValue : ""}
+              onChange={onChangeMax}
             />
           </div>
         </div>

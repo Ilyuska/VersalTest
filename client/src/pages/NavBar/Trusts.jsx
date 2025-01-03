@@ -6,11 +6,14 @@ import Formochka from "../Home/OurTrusts/Formochka";
 //Сдесь будет API
 import information from "@/api/TempAPI/OurTrusts/information";
 
-const Trusts = ({ setIsMainPage, setHeaderPict }) => {
+const Trusts = ({ setHeaderSettings }) => {
   useEffect(() => {
-    setIsMainPage(false);
-    setHeaderPict({ pict: image, discription: "Нам доверяют" });
-  }, [setIsMainPage, setHeaderPict]);
+    setHeaderSettings({
+      page: "information",
+      pict: image,
+      discription: "Нам доверяют",
+    });
+  }, [setHeaderSettings]);
 
   return (
     <>
