@@ -2,18 +2,18 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "@/context/index";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "@/utils/routes";
-import logo from "@/assets/img/Header/Logo.png";
-import phone from "@/assets/img/Footer/phone.png";
-import enter from "@/assets/img/Header/enter.png";
-import user from "@/assets/img/Header/user.png";
-import cart from "@/assets/img/Header/cart.png";
-import burger from "@/assets/img/Header/burger_menu.png";
+import logo from "@/assets/img/logos/Logo.png";
+import phone from "@/assets/img/icons/phone.png";
+import enter from "@/assets/img/icons/enter.png";
+import user from "@/assets/img/icons/user.png";
+import cart from "@/assets/img/icons/cart.png";
+import burger from "@/assets/img/icons/burger_menu.png";
 import MyImgInLine from "@/components/UI/MyImgInLine";
-import MyBurgerMenu from "@/components/UI/MyBurgerMenu";
-import MyBurgerUser from "@/components/UI/MyBurgerUser";
-import MyModalWindow from "@/components/UI/MyModalWindow";
-import MyLoginForm from "@/components/UI/MyLoginForm";
-import MyModalForProfile from "@/components/UI/MyModalWindowUpdate/MyModalForProfile";
+import MyBurgerMenu from "@/components/simple/MyBurger/MyBurgerMenu";
+import MyBurgerUser from "@/components/simple/MyBurger/MyBurgerUser";
+import MyModal from "@/components/simple/MyModal/MyModal";
+import MyLoginForm from "@/components/simple/MyLoginForm";
+import MyModalForProfile from "@/components/simple/MyModal/MyModalForProfile";
 
 const MyNavBar = ({ page }) => {
   const { isAuth, login, logout, token } = useContext(AuthContext);
@@ -95,9 +95,9 @@ const MyNavBar = ({ page }) => {
               alt="enter"
               className="h-6 mt-2 md:h-7 md:mr-2 lg:mt-0 cursor-pointer"
             />
-            <MyModalWindow status={isLogModal} setStatus={setLogModal}>
+            <MyModal status={isLogModal} setStatus={setLogModal}>
               <MyLoginForm className="p-5 flex flex-col gap-7 items-center justify-around bg-black bg-opacity-50 rounded-xl" />
-            </MyModalWindow>
+            </MyModal>
           </>
         )}
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 import Item from "./Item";
 
 const MenuItems = ({ menuItems, addToCart, delFromCart }) => {

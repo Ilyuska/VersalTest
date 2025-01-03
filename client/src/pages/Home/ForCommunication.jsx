@@ -3,9 +3,9 @@ import MyInput from "@/components/UI/MyInput";
 import MyTextArea from "@/components/UI/MyTextArea";
 import MyButton from "@/components/UI/MyButton";
 import MyImgInLine from "@/components/UI/MyImgInLine";
-import mail from "@/assets/img/Footer/mail.png";
-import phone from "@/assets/img/Footer/phone.png";
-import bg from "@/assets/img/ForCommuniction/ForCommuniction.png";
+import mail from "@/assets/img/icons/mail.png";
+import phone from "@/assets/img/icons/phone.png";
+import bg from "@/assets/img/banners/ForCommuniction.png";
 
 const ForCommunication = () => {
   const [forma, setForma] = useState({

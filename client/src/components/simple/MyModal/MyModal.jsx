@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 // Стек для отслеживания модальных окон
 let modalStack = [];
 
-const MyModalWindow = ({ children, status, setStatus }) => {
+const MyModal = ({ children, status, setStatus }) => {
   if (!status) return null;
 
   useEffect(() => {
@@ -67,4 +67,4 @@ const MyModalWindow = ({ children, status, setStatus }) => {
   );
 };
 
-export default MyModalWindow;
+export default MyModal;

@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import { CartContext } from "@/context/index";
-import MyModalWindow from "../../components/UI/MyModalWindow";
-import MyInput from "../../components/UI/MyInput";
+import MyModal from "@/components/simple/MyModal/MyModal";
+import MyInput from "@/components/UI/MyInput";
 import TrashModal from "./TrashModal";
 
-import trash from "@/assets/img/Admin/Trash.png";
+import trash from "@/assets/img/icons/trash.png";
 
 const TypesOfGuests = () => {
   const { guests } = useContext(CartContext);
@@ -55,7 +55,7 @@ const TypesOfGuests = () => {
         >
           +
         </div>
-        <MyModalWindow status={isModalOpen} setStatus={setModalOpen}>
+        <MyModal status={isModalOpen} setStatus={setModalOpen}>
           <div className="grid grid-cols-3 items-center gap-y-3 p-2 text-mainGray">
             <div className="col-span-3 text-2xl text-center">
               Добавить гостя
@@ -102,7 +102,7 @@ const TypesOfGuests = () => {
               Добавить
             </button>
           </div>
-        </MyModalWindow>
+        </MyModal>
       </div>
     </div>
   );

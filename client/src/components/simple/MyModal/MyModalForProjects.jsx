@@ -1,10 +1,10 @@
 import { SwiperSlide } from "swiper/react";
-import MyModalWindow from "../MyModalWindow";
-import MySlider from "../MySlider/MySlider";
+import MyModal from "./MyModal";
+import MySlider from "../../smart/MySlider";
 
 const MyModalForProjects = ({ info, status, setStatus }) => {
   return (
-    <MyModalWindow status={status} setStatus={setStatus}>
+    <MyModal status={status} setStatus={setStatus}>
       <div className="text-center text-lg md:text-2xl lg:text-3xl font-thin my-5 px-4 w-[70vw]">
         {info.title}
       </div>
@@ -31,7 +31,7 @@ const MyModalForProjects = ({ info, status, setStatus }) => {
           <div>Тип мероприятия: {info.discription.type}</div>
         </div>
       </div>
-    </MyModalWindow>
+    </MyModal>
   );
 };
 

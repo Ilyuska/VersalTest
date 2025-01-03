@@ -1,4 +1,4 @@
-import redactor from "@/assets/img/Admin/Redactor.png";
+import redactor from "@/assets/img/icons/redactor.png";
 
 const Item = ({ children }) => {
   return (

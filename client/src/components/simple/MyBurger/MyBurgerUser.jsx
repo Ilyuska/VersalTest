@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import MyModalForProfile from "./MyModalWindowUpdate/MyModalForProfile";
+import MyModalForProfile from "../MyModal/MyModalForProfile";
 
 const MyBurgerUser = ({ status, setStatus, logout }) => {
   useEffect(() => {

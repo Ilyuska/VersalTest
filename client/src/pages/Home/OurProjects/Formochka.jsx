@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MyModalForProjects from "@/components/UI/MyModalWindowUpdate/MyModalForProjects";
+import MyModalForProjects from "@/components/simple/MyModal/MyModalForProjects";
 
 const Formochka = ({ project }) => {
   const [isOpen, setIsOpen] = useState(false);

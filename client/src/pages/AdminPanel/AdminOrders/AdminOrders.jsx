@@ -1,7 +1,7 @@
-import Filters from "@/components/UI/AdminUI/Filters";
-import FiltersInput from "@/components/UI/AdminUI/FiltersInput";
-import ListItems from "@/components/UI/AdminUI/ListItems";
-import Item from "@/components/UI/AdminUI/Item";
+import Filters from "@/components/UI/Filters";
+import FiltersInput from "@/components/UI/FiltersInput";
+import ListItems from "../ListItems";
+import Item from "../Item";
 
 const AdminOrders = () => {
   return (

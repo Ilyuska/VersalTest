@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import AdminLogin from "./AdminLogin";
 
-import logo from "../../assets/img/Header/Logo.png";
+import logo from "@/assets/img/logos/Logo.png";
 
 const AdminLoyout = () => {
   const navigate = useNavigate();

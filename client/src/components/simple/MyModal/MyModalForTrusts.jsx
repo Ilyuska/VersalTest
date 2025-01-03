@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MyModalWindow from "../MyModalWindow";
+import MyModal from "./MyModal";
 import MyModalForProjects from "./MyModalForProjects";
 
 const MyModalForTrusts = ({ info, status, setStatus }) => {
@@ -7,7 +7,7 @@ const MyModalForTrusts = ({ info, status, setStatus }) => {
   const [projectIsOpen, setProgectIsOpen] = useState(false);
 
   return (
-    <MyModalWindow status={status} setStatus={setStatus}>
+    <MyModal status={status} setStatus={setStatus}>
       <div className="md:w-[50vh] lg:w-[40vw] ">
         <div className="text-center text-lg md:text-2xl lg:text-3xl font-thin my-3">
           {info.nameOfCompany}
@@ -41,13 +41,13 @@ const MyModalForTrusts = ({ info, status, setStatus }) => {
               onClick={() => setGramotaIsOpen(true)}
               alt="gramota"
             />
-            <MyModalWindow status={gramotaIsOpen} setStatus={setGramotaIsOpen}>
+            <MyModal status={gramotaIsOpen} setStatus={setGramotaIsOpen}>
               <img
                 className="w-[50vh] h-auto rounded-2xl "
                 src={info.gramota}
                 alt="gramota"
               />
-            </MyModalWindow>
+            </MyModal>
             <div
               className="md:hidden cursor-pointer text-center text-white rounded-2xl bg-mainGreen p-2 "
               onClick={() => setProgectIsOpen(true)}
@@ -57,7 +57,7 @@ const MyModalForTrusts = ({ info, status, setStatus }) => {
           </div>
         </div>
       </div>
-    </MyModalWindow>
+    </MyModal>
   );
 };
 

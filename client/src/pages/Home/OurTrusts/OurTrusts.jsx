@@ -1,5 +1,5 @@
 import { SwiperSlide } from "swiper/react";
-import MySlider from "@/components/UI/MySlider/MySlider";
+import MySlider from "@/components/smart/MySlider";
 import MyTitle from "@/components/UI/MyTitle";
 
 import Formochka from "./Formochka";

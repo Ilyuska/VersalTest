@@ -1,11 +1,10 @@
 import { useState } from "react";
-import Filters from "@/components/UI/AdminUI/Filters";
-import FiltersInput from "@/components/UI/AdminUI/FiltersInput";
-import ListItems from "@/components/UI/AdminUI/ListItems";
-import Item from "@/components/UI/AdminUI/Item";
+import Filters from "@/components/UI/Filters";
+import FiltersInput from "@/components/UI/FiltersInput";
+import ListItems from "../ListItems";
+import Item from "../Item";
 
 import menuItems from "@/api/TempAPI/Menu/MenuItemsAPI";
-import pict from "@/api/TempAPI/Menu/temp.png";
 
 const AdminMenu = () => {
   const allMenu = menuItems;
@@ -138,7 +137,7 @@ const AdminMenu = () => {
               <input type="checkbox" className="" />
             </td>
             <td className="border border-gray-300 py-2 flex justify-center">
-              <img src={pict} alt="bludo" className="w-16 rounded" />
+              <img src={bludo.photo} alt="bludo" className="w-16 rounded" />
             </td>
             <td className="border border-gray-300 px-4 py-2">{bludo.name}</td>
             <td className="border border-gray-300 px-4 py-2">

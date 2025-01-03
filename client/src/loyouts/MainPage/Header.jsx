@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "@/context";
 import video from "@/assets/video/video.mp4";
-import hart from "@/assets/img/Header/hart.png";
+import hart from "@/assets/img/banners/hart.png";
 
 import MyNavBar from "./MyNavBar";
-import MyLoginForm from "@/components/UI/MyLoginForm";
+import MyLoginForm from "@/components/simple/MyLoginForm";
 
 const Header = ({ settings }) => {
   const { isAuth, login, logout, token } = useContext(AuthContext);

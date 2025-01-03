@@ -1,5 +1,3 @@
-import React from "react";
-
 const MakingOrder = () => {
   return (
     <div className="border-2 border-mainGray rounded-3xl">

@@ -1,6 +1,5 @@
-import React from "react";
-import MyModalWindow from "../MyModalWindow";
-import MyInput from "../MyInput";
+import MyModal from "./MyModal";
+import MyInput from "../../UI/MyInput";
 
 const MyModalForProfile = ({ title, status, setStatus }) => {
   const polya = {
@@ -11,7 +10,7 @@ const MyModalForProfile = ({ title, status, setStatus }) => {
     Телефон: "+79999999999",
   };
   return (
-    <MyModalWindow status={status} setStatus={setStatus}>
+    <MyModal status={status} setStatus={setStatus}>
       <div className="text-center text-2xl m-8 ">{title}</div>
       <form action="" className="grid grid-cols-1 gap-3 md:grid-cols-2 p-3">
         {Object.keys(polya).map((key) => (
@@ -33,7 +32,7 @@ const MyModalForProfile = ({ title, status, setStatus }) => {
           Сохранить
         </button>
       </form>
-    </MyModalWindow>
+    </MyModal>
   );
 };
 

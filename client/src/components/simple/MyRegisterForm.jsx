@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
-import MyButton from "./MyButton";
-import MyInput from "./MyInput";
-import { AuthContext } from "../../context/index";
+import MyButton from "../UI/MyButton";
+import MyInput from "../UI/MyInput";
+import { AuthContext } from "@/context/index";
 
 const MyRegisterForm = (props) => {
   const [info, setLogin] = useState({ login: "", password: "" });

@@ -7,12 +7,12 @@ const AdminLogin = ({ setIsAdmin, navigate }) => {
         <div className="text-2xl font-thin text-center mb-4">Вход</div>
         <MyInput
           placeholder="Логин"
-          className="text-black border-gray-500 my-2"
+          className="text-black border-gray-500 my-2 w-full"
         />
         <MyInput
           placeholder="Пароль"
           type="password"
-          className="text-black border-gray-500 my-2"
+          className="text-black border-gray-500 my-2 w-full"
         />
         <button
           onClick={() => {

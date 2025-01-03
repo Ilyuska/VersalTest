@@ -1,9 +1,9 @@
-import about from "@/assets/img/AboutFormochka/About.png";
-import pictForm1 from "@/assets/img/AboutFormochka/Pluses1.png";
-import pictForm2 from "@/assets/img/AboutFormochka/Pluses2.png";
-import pictForm3 from "@/assets/img/AboutFormochka/Pluses3.png";
-import pictForm4 from "@/assets/img/AboutFormochka/Pluses4.png";
-import pictForm5 from "@/assets/img/AboutFormochka/Pluses5.png";
+import about from "@/assets/img/banners/About.png";
+import pictForm1 from "@/assets/img/icons/Pluses1.png";
+import pictForm2 from "@/assets/img/icons/Pluses2.png";
+import pictForm3 from "@/assets/img/icons/Pluses3.png";
+import pictForm4 from "@/assets/img/icons/Pluses4.png";
+import pictForm5 from "@/assets/img/icons/Pluses5.png";
 
 import MyTitle from "@/components/UI/MyTitle";
 import AboutFormochka from "./AboutFormochka";

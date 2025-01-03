@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import MyTitle from "@/components/UI/MyTitle";
-import image from "@/assets/img/Header/Contacts.png";
-import worker from "@/assets/img/Contacts/worker.jpg";
+import image from "@/assets/img/banners/Contacts.png";
+import worker from "@/assets/img/banners/worker.jpg";
 
 const Contacts = ({ setHeaderSettings }) => {
   useEffect(() => {

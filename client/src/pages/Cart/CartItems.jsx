@@ -5,8 +5,8 @@ import TrashModal from "./TrashModal";
 
 import { CartContext } from "@/context/index";
 
-import emptyCart from "@/assets/img/cart/EmptyCart.png";
-import trash from "@/assets/img/Admin/Trash.png";
+import emptyCart from "@/assets/img/banners/EmptyCart.png";
+import trash from "@/assets/img/icons/trash.png";
 
 const CartItems = () => {
   const { cart, guests } = useContext(CartContext);

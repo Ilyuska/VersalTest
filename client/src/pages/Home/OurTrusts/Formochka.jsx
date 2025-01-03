@@ -1,6 +1,5 @@
-import React from "react";
-import MyModalForTrusts from "@/components/UI/MyModalWindowUpdate/MyModalForTrusts";
 import { useState } from "react";
+import MyModalForTrusts from "@/components/simple/MyModal/MyModalForTrusts";
 
 const Formochka = ({ image, information }) => {
   const [isOpen, setIsOpen] = useState(false);

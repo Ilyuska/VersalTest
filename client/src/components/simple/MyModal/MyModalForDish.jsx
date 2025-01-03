@@ -1,10 +1,9 @@
 import { useState } from "react";
-import MyModalWindow from "../../MyModalWindow";
-import trash from "@/assets/img/Admin/Trash.png";
+import MyModal from "./MyModal";
 
-const ModalForDish = ({ status, setStatus, title }) => {
+const MyModalForDish = ({ status, setStatus, title }) => {
   return (
-    <MyModalWindow status={status} setStatus={setStatus}>
+    <MyModal status={status} setStatus={setStatus}>
       <div className="w-[60vw]">
         <div className="text-center text-2xl font-semibold my-5">{title}</div>
         <div className="grid grid-cols-2 my-8">
@@ -50,8 +49,8 @@ const ModalForDish = ({ status, setStatus, title }) => {
           </div>
         </div>
       </div>
-    </MyModalWindow>
+    </MyModal>
   );
 };
 
-export default ModalForDish;
+export default MyModalForDish;

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import MyTitle from "@/components/UI/MyTitle";
-import image from "@/assets/img/Header/Trusts.jpg";
+import image from "@/assets/img/banners/Trusts.jpg";
 import Formochka from "../Home/OurTrusts/Formochka";
 
 //Сдесь будет API

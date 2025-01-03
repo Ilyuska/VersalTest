@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "@/context/index";
-import MyButton from "./MyButton";
-import MyInput from "./MyInput";
+import MyButton from "../UI/MyButton";
+import MyInput from "../UI/MyInput";
 import MyRegisterForm from "./MyRegisterForm";
-import MyModalWindow from "./MyModalWindow";
+import MyModal from "./MyModal/MyModal";
 
 const MyLoginForm = (props) => {
   const { isAuth, login, logout, token } = useContext(AuthContext);
@@ -27,9 +27,9 @@ const MyLoginForm = (props) => {
           <div onClick={() => setRegModal(true)} className="cursor-pointer">
             Регистрация
           </div>
-          <MyModalWindow status={isRegModal} setStatus={setRegModal}>
+          <MyModal status={isRegModal} setStatus={setRegModal}>
             <MyRegisterForm className="p-5 flex flex-col gap-7 items-center justify-around bg-black bg-opacity-50 rounded-xl" />
-          </MyModalWindow>
+          </MyModal>
         </form>
       ) : (
         <></>

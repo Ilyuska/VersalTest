@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
-import MainLoyout from "../loyouts/MainPage/MainLoyout";
+import MainLoyout from "@/loyouts/MainPage/MainLoyout";
 import Home from "@/pages/Home/Home";
 
 import OurProjects from "@/pages/NavBar/OurProjects";
@@ -12,7 +12,7 @@ import Menu from "@/pages/Menu/Menu";
 import Cart from "@/pages/Cart/Cart";
 import Orders from "@/pages/Profile/Orders";
 
-import AdminLoyout from "../loyouts/AdminPage/AdminLoyout";
+import AdminLoyout from "@/loyouts/AdminPage/AdminLoyout";
 import AdminMenu from "@/pages/AdminPanel/AdminMenu/AdminMenu";
 import AdminOrders from "@/pages/AdminPanel/AdminOrders/AdminOrders";
 import AdminUsers from "@/pages/AdminPanel/AdminUsers/AdminUsers";

@@ -1,5 +1,5 @@
-import trash from "@/assets/img/Admin/Trash.png";
-import MyModalWindow from "../../components/UI/MyModalWindow";
+import trash from "@/assets/img/icons/trash.png";
+import MyModal from "@/components/simple/MyModal/MyModal";
 
 const TrashModal = ({ status, setStatus, clear, title, text }) => {
   return (
@@ -10,7 +10,7 @@ const TrashModal = ({ status, setStatus, clear, title, text }) => {
         className="bg-red-500 p-2 w-9 md:w-11 h-auto rounded-xl cursor-pointer hover:scale-95"
         onClick={() => setStatus(true)}
       />
-      <MyModalWindow status={status} setStatus={setStatus}>
+      <MyModal status={status} setStatus={setStatus}>
         <div className="px-10 py-2  max-w-xs">
           <div className="text-2xl text-center">
             Вы уверены, что хотите очистить {title}?
@@ -36,7 +36,7 @@ const TrashModal = ({ status, setStatus, clear, title, text }) => {
             </button>
           </div>
         </div>
-      </MyModalWindow>
+      </MyModal>
     </>
   );
 };

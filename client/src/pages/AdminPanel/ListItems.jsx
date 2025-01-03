@@ -1,7 +1,7 @@
 import { useState } from "react";
-import trash from "@/assets/img/Admin/Trash.png";
-import plus from "@/assets/img/Admin/Plus.png";
-import ModalForDish from "./Modals/ModalForDish";
+import trash from "@/assets/img/icons/Trash.png";
+import plus from "@/assets/img/icons/Plus.png";
+import MyModalForDish from "@/components/simple/MyModal/MyModalForDish";
 
 const ListItems = ({ children, titleTable, colsName }) => {
   const colsToRender = colsName[0] == "checkbox" ? colsName.slice(1) : colsName;
@@ -19,7 +19,7 @@ const ListItems = ({ children, titleTable, colsName }) => {
             className="bg-mainGreen rounded-lg p-1"
           />
           {titleTable == "блюд" ? (
-            <ModalForDish
+            <MyModalForDish
               status={isModalItem}
               setStatus={setModalItem}
               title="Добавить блюдо"

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import MyTitle from "@/components/UI/MyTitle";
-import image from "@/assets/img/Header/Projects.jpg";
+import image from "@/assets/img/banners/Projects.jpg";
 import Formochka from "../Home/OurProjects/Formochka";
 
 //tempApi

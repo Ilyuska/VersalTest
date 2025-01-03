@@ -1,11 +1,9 @@
-import pict from "../../pages/Menu/temp.png";
-
 const Item = ({ info, addToCart, delFromCart }) => {
   return (
     <div className="flex flex-col items-center justify-between">
       <div className="h-3/4 w-full">
         <img
-          src={pict}
+          src={info.photo}
           alt="bludo"
           className="w-full h-full object-cover rounded-2xl"
         />
