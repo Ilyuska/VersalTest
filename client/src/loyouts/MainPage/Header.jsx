@@ -60,7 +60,7 @@ const Header = ({ settings }) => {
               <img src={hart} className="rotate-180 " alt="hart" />
             </div>
           ) : (
-            <MyLoginForm className="p-5 flex flex-col gap-7 items-center justify-around bg-black bg-opacity-40 rounded-3xl" />
+            <MyLoginForm className="p-5 flex flex-col gap-5 items-center justify-around bg-black bg-opacity-40 rounded-3xl" />
           )}
         </div>
       ) : settings.page == "information" ? (

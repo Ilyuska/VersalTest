@@ -7,17 +7,16 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Проверяем наличие токена в localStorage при загрузке приложения
-    const savedToken = localStorage.getItem("authToken");
+    const savedToken = localStorage.getItem("token");
     if (savedToken) {
       setToken(savedToken);
       setIsAuth(true);
     }
   }, []);
 
-  const login = (username) => {
-    const authToken = username;
-    localStorage.setItem("authToken", authToken); // Сохраняем токен
-    setToken(authToken);
+  const login = (token) => {
+    localStorage.setItem("token", token); // Сохраняем токен
+    setToken(token);
     setIsAuth(true);
   };
 
@@ -38,7 +37,7 @@ const AuthProvider = ({ children }) => {
   //   };
 
   const logout = () => {
-    localStorage.removeItem("authToken"); // Удаляем токен
+    localStorage.removeItem("token"); // Удаляем токен
     setToken(null);
     setIsAuth(false);
   };

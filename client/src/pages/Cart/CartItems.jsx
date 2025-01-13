@@ -43,14 +43,15 @@ const CartItems = () => {
               <div className="h-28 grid grid-cols-[1fr_2fr_1fr_1.5fr_0.5fr] gap-x-4 my-4 text-lg font-semibold">
                 <div className="w-28 h-28 flex mx-auto">
                   <img
-                    src={item.photo}
+                    src={item.image}
                     alt={item.name}
                     className="rounded-3xl h-full w-full object-cover"
                   />
                 </div>
 
                 <div className=" ">
-                  {item.name} {item.weight}гр.
+                  {item.name} {item.weight}
+                  {item.weight_type}.
                 </div>
                 {/* 
                 

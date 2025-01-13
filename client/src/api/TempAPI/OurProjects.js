@@ -1,14 +1,13 @@
-import pict from "./project1.png"
-import p11 from "./p1pict1.png"
-import p12 from "./p1pict2.png"
-import p21 from "./p2pict1.png"
-import p22 from "./p2pict2.png"
-import p23 from "./p2pict3.png"
-import pict2 from "./project2.png"
-
-const Projects = [
+import pict from "./tempPhoto/project1.png"
+import p11 from "./tempPhoto/p1pict1.png"
+import p12 from "./tempPhoto/p1pict2.png"
+import p21 from "./tempPhoto/p2pict1.png"
+import p22 from "./tempPhoto/p2pict2.png"
+import p23 from "./tempPhoto/p2pict3.png"
+import pict2 from "./tempPhoto/project2.png"
 
 
+export const projects = [
     {
         pict: pict,
         title: "Новогодний корпоратив",
@@ -100,5 +99,3 @@ const Projects = [
     
     
 ]
-
-export default Projects

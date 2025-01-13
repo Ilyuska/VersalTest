@@ -1,14 +1,16 @@
-import pict from "./temp.png"
+import pict from "./tempPhoto/menu-item-1.png"
+import longpict from "./tempPhoto/menu-item-2.png"
 
-const menuItems = [
+
+export const menu = [
   {
     id: 0,
     name: "Борщ",
     category: "Суп",
     price: 320,
     weight: 300,
-    photo: pict,
-    count: 0,
+    weight_type: "мл",
+    image: longpict,
   },
   {
     id: 1,
@@ -16,8 +18,8 @@ const menuItems = [
     category: "Суп",
     price: 290,
     weight: 300,
-    photo: pict,
-    count: 0,
+    weight_type: "гр",
+    image: pict,
   },
   {
     id: 2,
@@ -25,8 +27,8 @@ const menuItems = [
     category: "Суп",
     price: 270,
     weight: 300,
-    photo: pict,
-    count: 0,
+    weight_type: "гр",
+    image: longpict,
   },
   {
     id: 3,
@@ -34,8 +36,8 @@ const menuItems = [
     category: "Горячее",
     price: 350,
     weight: 300,
-    photo: pict,
-    count: 0,
+    weight_type: "гр",
+    image: pict,
   },
   {
     id: 4,
@@ -43,8 +45,8 @@ const menuItems = [
     category: "Горячее",
     price: 350,
     weight: 300,
-    photo: pict,
-    count: 0,
+    weight_type: "гр",
+    image: pict,
   },
   {
     id: 5,
@@ -52,8 +54,8 @@ const menuItems = [
     category: "Салат",
     price: 300,
     weight: 300,
-    photo: pict,
-    count: 0,
+    weight_type: "гр",
+    image: pict,
   },
   {
     id: 6,
@@ -61,8 +63,8 @@ const menuItems = [
     category: "Салат",
     price: 400,
     weight: 300,
-    photo: pict,
-    count: 0,
+    weight_type: "гр",
+    image: pict,
   },
   {
     id: 7,
@@ -70,9 +72,7 @@ const menuItems = [
     category: "Десерт",
     price: 200,
     weight: 300,
-    photo: pict,
-    count: 0,
+    weight_type: "гр",
+    image: pict,
   },
 ];
-
-export default menuItems;

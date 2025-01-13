@@ -1,17 +1,18 @@
-import image1 from "./Газпром.png"
-import image2 from "./домру.png"
-import image3 from "./Мерседес.png"
-import gramota1 from "./Остальные.jpg"
-import gramota2 from "./ГрамотаДомру.jpg"
-import Projects from "../OurProjects/OurProjects"
+import image1 from "./tempPhoto/logo-gazprom.png"
+import image2 from "./tempPhoto/logo-domru.png"
+import image3 from "./tempPhoto/logo-merz.png"
+import gramota1 from "./tempPhoto/gramota-other.jpg"
+import gramota2 from "./tempPhoto/gramota-domru.jpg"
+import { projects } from "./OurProjects"
 
-const information = [
+
+export const trusts = [
     {
         logo:image1,
         information: {
             nameOfCompany:"Газпром",
             gramota:gramota1,
-            evente: Projects[0],
+            evente: projects[0],
         },
     },
     {
@@ -19,7 +20,7 @@ const information = [
         information: {
             nameOfCompany:"Домру",
             gramota:gramota2,
-            evente: Projects[1],
+            evente: projects[1],
         },
     },
     {
@@ -27,7 +28,7 @@ const information = [
         information: {
             nameOfCompany:"Мерседес",
             gramota:gramota1,
-            evente: Projects[0],
+            evente: projects[0],
         },
     },
     {
@@ -35,7 +36,7 @@ const information = [
         information: {
             nameOfCompany:"Газпром",
             gramota:gramota1,
-            evente: Projects[1],
+            evente: projects[1],
         },
     },
     {
@@ -43,7 +44,7 @@ const information = [
         information: {
             nameOfCompany:"Домру",
             gramota:gramota2,
-            evente: Projects[0],
+            evente: projects[0],
         },
     },
     {
@@ -51,7 +52,7 @@ const information = [
         information: {
             nameOfCompany:"Мерседес",
             gramota:gramota1,
-            evente: Projects[1],
+            evente: projects[1],
         },
     },
     {
@@ -59,7 +60,7 @@ const information = [
         information: {
             nameOfCompany:"Газпром",
             gramota:gramota1,
-            evente: Projects[0]
+            evente: projects[0]
         },
     },
     {
@@ -67,9 +68,7 @@ const information = [
         information: {
             nameOfCompany:"Домру",
             gramota:gramota2,
-            evente: Projects[1],
+            evente: projects[1],
         },
     },
 ]
-
-export default information;

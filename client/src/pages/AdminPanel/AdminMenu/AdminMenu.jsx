@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Filters from "@/components/UI/Filters";
 import FiltersInput from "@/components/UI/FiltersInput";
 import ListItems from "../ListItems";
 import Item from "../Item";
 
-import menuItems from "@/api/TempAPI/Menu/MenuItemsAPI";
+import { getMenu } from "@/api/AdminAPI";
 
 const AdminMenu = () => {
-  const allMenu = menuItems;
-  const [menu, setMenu] = useState(menuItems);
+  const allMenu = [];
+  const [menu, setMenu] = useState([]);
+
+  useEffect(() => {
+    const fetchMenu = async () => {
+      try {
+        const menu = await getMenu();
+        setMenu(menu);
+        allMenu = menu;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchMenu();
+  }, []);
+
   const [selectItems, setSelectItems] = useState([]);
   const [filters, setFilters] = useState({
     name: "",
