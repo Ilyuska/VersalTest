@@ -10,7 +10,6 @@ const MyRegisterForm = (props) => {
   const [phone, setPhone] = useState("");
   const [code, setCode] = useState("");
   const [codeModal, setCodeModal] = useState(false);
-  const [error, setError] = useState("");
 
   const handleSendCode = async () => {
     try {
@@ -51,7 +50,7 @@ const MyRegisterForm = (props) => {
           required
         />
         <PhoneInput phone={phone} setPhone={setPhone} />
-        <button type="submit" className="myButton">
+        <button type="submit" className="myButton w-full">
           Зарегестрироваться
         </button>
       </form>

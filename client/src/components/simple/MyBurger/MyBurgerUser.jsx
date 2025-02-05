@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MyModalForProfile from "../MyModal/MyModalForProfile";
 
 const MyBurgerUser = ({ status, setStatus, logout }) => {
@@ -33,14 +33,14 @@ const MyBurgerUser = ({ status, setStatus, logout }) => {
               Профиль
             </div>
 
-            <NavLink
+            <Link
               to="/orders"
               onClick={() => setStatus(false)}
               className="flex h-1/3 justify-center items-center  shadow-xl hover:scale-95 py-1"
             >
               Мои заказы
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to="/"
               onClick={() => {
                 logout();
@@ -49,7 +49,7 @@ const MyBurgerUser = ({ status, setStatus, logout }) => {
               className="flex h-1/3 justify-center items-center  shadow-xl  hover:scale-95 py-1 hover:text-red-400"
             >
               Выйти
-            </NavLink>
+            </Link>
           </div>
         </div>
       )}

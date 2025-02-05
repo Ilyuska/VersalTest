@@ -25,6 +25,7 @@ const MyCodeForm = ({
         <div className="font-thin">
           Введите 6-значный код, который мы <br /> отправили на номер
           {phone}
+          <br /> (Пока любые 6 цифр)
         </div>
         <input
           className="myInput text-center"
@@ -38,7 +39,7 @@ const MyCodeForm = ({
           minLength={6}
           required
         />
-        <button className="myButton" type="submit">
+        <button className="myButton w-full" type="submit">
           Подтвердить
         </button>
       </form>

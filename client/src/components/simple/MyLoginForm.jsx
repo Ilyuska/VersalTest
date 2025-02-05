@@ -47,7 +47,7 @@ const MyLoginForm = (props) => {
           >
             <div className="text-2xl font-thin ">Войти в аккаунт</div>
             <PhoneInput phone={phone} setPhone={setPhone} />
-            <button type="submit" className="myButton">
+            <button type="submit" className="myButton w-full">
               Войти
             </button>
             <div onClick={() => setRegModal(true)} className="cursor-pointer">

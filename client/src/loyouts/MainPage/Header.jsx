@@ -34,7 +34,7 @@ const Header = ({ settings }) => {
           <div className="absolute inset-0 bg-black opacity-50"></div>
         </div>
       ) : (
-        <div className="h-[12vh] md:h-[15vh] w-screen bg-mainGray"></div>
+        <div className="h-24 md:h-32 w-screen bg-mainGray"></div>
       )}
 
       <MyNavBar page={settings.page} />
@@ -46,7 +46,7 @@ const Header = ({ settings }) => {
               isAuth ? "md:full lg:w-1/2 px-10" : "md:w-1/2"
             }`}
           >
-            «Версаль Кейтериг» - победитель ежегодной Всероссийской премии
+            «Версаль Кейтеринг» - победитель ежегодной Всероссийской премии
             «Кейтеринг года» в номинации «Внимание к деталям». Компания «Версаль
             Кейтеринг» предлагает организацию банкетов, фуршетов, мероприятий
             любого формата и уровня.

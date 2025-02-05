@@ -1,17 +1,29 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { OrderContext } from "@/context/index";
 import TrashModal from "./TrashModal";
-
-import { CartContext } from "@/context/index";
+import Bludo from "./Bludo";
 
 import emptyCart from "@/assets/img/banners/EmptyCart.png";
-import trash from "@/assets/img/icons/trash.png";
 
 const CartItems = () => {
-  const { cart, guests } = useContext(CartContext);
+  const { dishes, templates, clear, length } = useContext(OrderContext);
   const [trashModal, setTrashModal] = useState(false);
-  const [countItem, setCountItem] = useState("");
+
+  const FromDishesToTemplates = (item, template) => {
+    dishes.remove(item);
+    templates.addDish(template, item);
+  };
+
+  const FromTemplatesToDishes = (item, template) => {
+    templates.removeDish(template, item);
+    dishes.add(item);
+  };
+
+  const changeTemplate = (item, template, newTemplate) => {
+    templates.removeDish(template, item);
+    templates.addDish(newTemplate, item);
+  };
 
   return (
     <div className="border-2 border-mainGray rounded-3xl">
@@ -20,16 +32,16 @@ const CartItems = () => {
         <TrashModal
           status={trashModal}
           setStatus={setTrashModal}
-          clear={cart.clear}
-          title="корзину"
+          clear={clear}
+          title="корзину "
           text="блюда"
         />
       </div>
-      <div className="grid mx-5 py-1">
-        {cart.value.length == 0 ? (
+      <div className="grid mx-2 py-1">
+        {length === 0 ? (
           <div className="grid justify-center text-center gap-4 my-5">
-            <img src={emptyCart} alt="empty cart" className="" />
-            <div className="text-mainGray text-2xl ">Ваша корзина пуста</div>
+            <img src={emptyCart} alt="empty cart" />
+            <div className="text-mainGray text-2xl">Ваша корзина пуста</div>
             <Link
               to="/menu"
               className=" bg-mainGreen text-white text-2xl font-light rounded-xl hover:scale-95"
@@ -38,70 +50,66 @@ const CartItems = () => {
             </Link>
           </div>
         ) : (
-          cart.value.map((item) => {
-            return (
-              <div className="h-28 grid grid-cols-[1fr_2fr_1fr_1.5fr_0.5fr] gap-x-4 my-4 text-lg font-semibold">
-                <div className="w-28 h-28 flex mx-auto">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="rounded-3xl h-full w-full object-cover"
-                  />
-                </div>
-
-                <div className=" ">
-                  {item.name} {item.weight}
-                  {item.weight_type}.
-                </div>
-                {/* 
-                
-                
-                
-                */}
-
-                <select
-                  value={item.count}
-                  onChange={(e) => {
-                    cart.changeCount(item.id, e.target.value);
-                  }}
-                  className="rounded-md bg-white border-mainGray border mx-1 text-mainGray text-lg cursor-pointer h-2/6 w-full truncate"
-                >
-                  <option value={Number.isFinite(item.count) ? item.count : 1}>
-                    Свое:
-                  </option>
-                  {Object.keys(guests.value).map((key) => (
-                    <option value={key}>
-                      {key} ({guests.value[key]}шт.)
-                    </option>
-                  ))}
-                </select>
-
-                <div className="text-center">
-                  {Number.isFinite(item.count)
-                    ? Number(item.count) * Number(item.price)
-                    : Number(guests.value[item.count]) * Number(item.price)}
-                  ₽
-                </div>
-
-                {/* 
-                
-                
-                
-                */}
-                <img
-                  src={trash}
-                  alt="Удалить"
-                  className="rounded-full w-11 h-11 p-[6px] bg-red-500 border-2 border-gray-300 mx-auto cursor-pointer"
-                  onClick={() => cart.remove(item.id)}
+          <>
+            {dishes.value.map((item) => (
+              <Bludo
+                key={item.dish.id} // Добавить уникальный ключ
+                info={item.dish}
+                del={dishes.remove}
+                isDishes={true}
+                dishesValue={item.quantity}
+                changeDishesValue={dishes.count}
+                toTemplates={FromDishesToTemplates}
+                toDishes={FromTemplatesToDishes}
+                changeTemplate={changeTemplate}
+                nowTemplate="cart" // Для блюд из корзины всегда "cart"
+                allTemplates={templates.titles}
+              />
+            ))}
+            {templates.value.map((item) =>
+              item.menu.map((bludo) => (
+                <Bludo
+                  key={bludo.id} // Уникальный ключ для каждого блюда
+                  info={bludo}
+                  del={templates.removeDish}
+                  isDishes={false}
+                  toTemplates={FromDishesToTemplates}
+                  toDishes={FromTemplatesToDishes}
+                  changeTemplate={changeTemplate}
+                  nowTemplate={item.name} // Для блюд из шаблона используем название шаблона
+                  allTemplates={templates.titles}
                 />
-              </div>
-            );
-          })
+              ))
+            )}
+          </>
         )}
       </div>
+      {/* <MyModal status={modalExchange} setStatus={setModalExchange}>
+        <div className="px-10 py-2  max-w-xs">
+          <div className="text-2xl text-center">
+            Данное блюдо уже есть у и будет просто удалено из корзины
+          </div>
+          <div className="flex justify-around">
+            <button
+              className="bg-mainGreen rounded-lg p-2 text-white hover:scale-95"
+              onClick={() => {
+                setConfirmExchange(true);
+                setModalExchange(false);
+              }}
+            >
+              Подтвердить
+            </button>
+            <button
+              className="bg-red-500 rounded-lg p-2 text-white hover:scale-95"
+              onClick={() => setModalExchange(false)}
+            >
+              Отменить
+            </button>
+          </div>
+        </div>
+      </MyModal> */}
     </div>
   );
 };
 
 export default CartItems;
-// grid-cols-[1fr_2fr_1fr_0.25fr_2fr_0.25fr_1fr_0.5fr]

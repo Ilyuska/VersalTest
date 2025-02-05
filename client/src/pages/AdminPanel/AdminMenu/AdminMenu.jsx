@@ -7,7 +7,7 @@ import Item from "../Item";
 import { getMenu } from "@/api/AdminAPI";
 
 const AdminMenu = () => {
-  const allMenu = [];
+  let allMenu = [];
   const [menu, setMenu] = useState([]);
 
   useEffect(() => {

@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { OrderContext } from "@/context/index";
 
-const Item = ({ info, addToCart, delFromCart }) => {
-  const [added, setAdded] = useState(false);
+const Item = ({ info }) => {
+  const { dishes, templates } = useContext(OrderContext);
+  const [addedOption, setAddedOption] = useState("");
 
-  const addedItem = (i) => {
-    setAdded(true);
-    setTimeout(() => {
-      setAdded(false);
-      addToCart(i);
-    }, "600");
-  };
+  const addToCart = () => dishes.add(info);
+  const addToTemplates = () => templates.addDish(addedOption, info);
+
+  useEffect(() => {
+    if (addedOption == "cart") {
+      addToCart();
+    } else if (addedOption.length > 0) {
+      addToTemplates();
+    }
+    setAddedOption("");
+  }, [addedOption]);
 
   return (
     <div className="flex flex-col items-center justify-between h-[40vh]">
@@ -25,23 +31,34 @@ const Item = ({ info, addToCart, delFromCart }) => {
           {info.name + " " + String(info.weight) + info.weight_type}
         </div>
         <div className="flex  gap-1">
-          <div className="w-1/3 flex items-center justify-cente font-bold  text-xl md:text-3xl">
+          <div className="w-1/3 flex items-center justify-cente font-bold  text-xl md:text-3xl lg:text-3xl">
             {info.price}₽
           </div>
-          {!added ? (
-            <div
-              className="w-2/3 flex items-center justify-center text-base md:text-xl font-semibold  text-white bg-mainGreen rounded-2xl hover:scale-95 cursor-pointer"
-              onClick={() => addedItem(info)}
+          {templates.value.length == 0 ? (
+            <button
+              onClick={() => addToCart()}
+              className="w-2/3 ml-2 bg-mainGreen rounded-xl text-white py-1 font-light text-sm md:text-lg hover:scale-95"
             >
-              В корзину
-            </div>
+              Добавить
+            </button>
           ) : (
-            <div
-              className="w-2/3 flex items-center justify-center text-center text-base font-semibold rounded-2xl bg-black bg-opacity-20 hover:scale-95 cursor-pointer"
-              onClick={() => delFromCart(info.id)}
+            <select
+              className="bg-mainGreen text-white rounded-xl w-2/3 text-center text-sm md:text-base"
+              value={addedOption}
+              onChange={(e) => setAddedOption(e.target.value)}
             >
-              Добавлено
-            </div>
+              <option disabled value="" className="bg-white w-auto">
+                Добавить...
+              </option>
+              <option value="cart" className="bg-white text-black w-auto">
+                Корзина
+              </option>
+              {templates.titles.map((i) => (
+                <option value={i} className="bg-white text-black w-auto">
+                  {i}
+                </option>
+              ))}
+            </select>
           )}
         </div>
       </div>

@@ -1,88 +1,66 @@
-import { useContext, useState, useEffect } from "react";
-import { CartContext } from "@/context/index";
-import Sort from "./Sort";
+import { useState, useEffect, useMemo } from "react";
+import DropMenu from "@/components/UI/DropMenu";
 import Filter from "./Filter";
 import Item from "./Item";
 
 import { getMenu } from "@/api/MainAPI";
 
 const Menu = ({ setHeaderSettings }) => {
-  const { cart } = useContext(CartContext);
-
   useEffect(() => {
     setHeaderSettings({ page: "others", pict: "", discription: "" });
   }, [setHeaderSettings]);
 
-  const [Menu, setMenu] = useState([]);
+  const [menu, setMenu] = useState([]);
+  const [selectedSort, setSelectedSort] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Все");
 
   useEffect(() => {
     const fetchMenu = async () => {
       try {
-        const menu = await getMenu();
-        setMenu(menu);
+        const tempMenu = await getMenu();
+        setMenu(tempMenu);
       } catch (error) {
         console.log(error);
       }
     };
     fetchMenu();
   }, []);
-  const [selectedSort, setSelectedSort] = useState("");
-  // const [selectedFilter, setSelectedFilter] = useState("Все");
 
-  // useEffect(() => {
-  //   const updatedMenu = menu.map((menuItem) => {
-  //     const cartItem = cart.value.find(
-  //       (cartItem) => cartItem.id == menuItem.id
-  //     );
-  //     return {
-  //       ...menuItem,
-  //       count: cartItem ? cartItem.count : 0,
-  //     };
-  //   });
-  //   setMenu(updatedMenu);
-  // }, [cart.value]);
+  const Dishes = useMemo(() => {
+    const category =
+      selectedCategory === "Все"
+        ? menu
+        : menu.filter((item) => item.category === selectedCategory);
 
-  // const sortMenu = (sort) => {
-  //   setSelectedSort(sort);
-  //   const tempSortedMenu = [...menu]; //Копируем состояни для безопасного изменения
-  //   if (sort == "price-desc") {
-  //     tempSortedMenu.sort((a, b) => b.price - a.price);
-  //   } else if (sort == "price-asc") {
-  //     tempSortedMenu.sort((a, b) => a.price - b.price);
-  //   } else if (sort == "name-desc") {
-  //     tempSortedMenu.sort((a, b) => b.name.localeCompare(a.name));
-  //   } else if (sort == "name-asc") {
-  //     tempSortedMenu.sort((a, b) => a.name.localeCompare(b.name));
-  //   }
-  //   setMenu(tempSortedMenu);
-  // };
+    const sorted = [...category].sort((a, b) => {
+      if (selectedSort == "price-desc") {
+        return b.price - a.price;
+      } else if (selectedSort == "price-asc") {
+        return a.price - b.price;
+      } else if (selectedSort == "name-desc") {
+        return b.name.localeCompare(a.name);
+      } else if (selectedSort == "name-asc") {
+        return a.name.localeCompare(b.name);
+      }
+    });
 
-  // const filterMenu = (filterBy) => {
-  //   setSelectedFilter(filterBy);
+    return sorted;
+  }, [menu, selectedCategory, selectedSort]);
 
-  //   if (filterBy === "Все") {
-  //     setMenu(allMenu);
-  //   } else {
-  //     const filteredMenu = allMenu.filter((item) => item.category === filterBy);
-  //     setMenu(filteredMenu);
-  //   }
-  // };
-  const tempSort = () => {
-    console.log("Sorting");
-  };
+  const allCategory = useMemo(() => {
+    return [...new Set(menu.map((item) => item.category))];
+  }, [menu]);
 
   return (
     <>
       <div className="my-8 mx-[10%] flex flex-wrap justify-between gap-y-3">
         <Filter
-          //onClick={filterMenu}
-          onClick={tempSort}
-          options={["Все", ...[...new Set(Menu.map((item) => item.category))]]}
+          onClick={setSelectedCategory}
+          options={["Все", ...allCategory]}
         />
-        <Sort
+        <DropMenu
           value={selectedSort}
-          // onChange={(sort) => sortMenu(sort)}
-          onChange={tempSort}
+          onChange={setSelectedSort}
           defaultValue="Сортировать по..."
           options={[
             { name: "По цене (убыванию)", value: "price-desc" },
@@ -90,16 +68,12 @@ const Menu = ({ setHeaderSettings }) => {
             { name: "По названию (А-Я)", value: "name-asc" },
             { name: "По названию (Я-А)", value: "name-desc" },
           ]}
+          className="rounded-lg p-2 bg-white border-mainGray border-2 text-mainGray text-lg cursor-pointer"
         />
       </div>
       <div className="mx-[10%] mb-10 grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-8">
-        {Menu.map((i, index) => (
-          <Item
-            info={i}
-            key={index}
-            addToCart={cart.add}
-            delFromCart={cart.remove}
-          />
+        {Dishes.map((i, index) => (
+          <Item info={i} key={index} />
         ))}
       </div>
     </>

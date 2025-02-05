@@ -1,28 +1,22 @@
 import { useState } from "react";
-import MyInput from "@/components/UI/MyInput";
-import MyTextArea from "@/components/UI/MyTextArea";
-import MyButton from "@/components/UI/MyButton";
 import MyImgInLine from "@/components/UI/MyImgInLine";
-import mail from "@/assets/img/icons/mail.png";
-import phone from "@/assets/img/icons/phone.png";
+import PhoneInput from "@/components/UI/PhoneInput";
+import mailImg from "@/assets/img/icons/mail.png";
+import phoneImg from "@/assets/img/icons/phone.png";
 import bg from "@/assets/img/banners/ForCommuniction.png";
 
 const ForCommunication = () => {
-  const [forma, setForma] = useState({
-    name: "",
-    tel: "",
-    mail: "",
-    comment: "",
-  });
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [mail, setMail] = useState("");
+  const [comment, setComment] = useState("");
 
   const submit = () => {
-    console.log(forma); //Сюда потом пихнуть проверку на значения и запрос
-    setForma({
-      name: "",
-      tel: "",
-      mail: "",
-      comment: "",
-    });
+    console.log(name, "\n", phone, "\n", mail, "\n", comment); //Сюда потом пихнуть проверку на значения и запрос
+    setName("");
+    setPhone("");
+    setMail("");
+    setComment("");
   };
 
   return (
@@ -46,7 +40,7 @@ const ForCommunication = () => {
           <div className="flex">
             <MyImgInLine
               properties="h-7 text-xl my-1"
-              pict={phone}
+              pict={phoneImg}
               typee="tel:+73422250636"
               content="+7(342)2250636"
             />
@@ -57,43 +51,50 @@ const ForCommunication = () => {
           <div className="flex">
             <MyImgInLine
               properties=" h-7 text-xl my-1"
-              pict={mail}
+              pict={mailImg}
               typee="mailto:info@permbanket.ru"
               content="info@permbanket.ru"
             />
           </div>
         </div>
       </div>
-      <form className="flex flex-col w-full md:w-1/2 items-center gap-y-5 bg-black py-7 rounded-3xl bg-opacity-40 text-white">
-        <div className="  text-2xl font-medium text-center md:hidden">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          submit();
+        }}
+        className="flex flex-col w-full md:w-1/2 items-center gap-y-5 bg-black p-7 rounded-3xl bg-opacity-40 text-white"
+      >
+        <label className="text-2xl font-medium text-center md:hidden">
           Свяжитесь с нами
-        </div>
-        <MyInput
+        </label>
+        <input
+          type="text"
           placeholder="Ваше имя"
-          value={forma.name}
-          onChange={(e) => setForma({ ...forma, name: e.target.value })}
-          className="w-11/12"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="myInput w-full"
+          required
         />
-        <MyInput
-          placeholder="Ваш телефон"
-          value={forma.tel}
-          onChange={(e) => setForma({ ...forma, tel: e.target.value })}
-          className="w-11/12"
-        />
-        <MyInput
+        <PhoneInput phone={phone} setPhone={setPhone} className="w-full" />
+        <input
+          type="email"
           placeholder="Ваша почта"
-          value={forma.mail}
-          onChange={(e) => setForma({ ...forma, mail: e.target.value })}
-          className="w-11/12"
+          value={mail}
+          onChange={(e) => setMail(e.target.value)}
+          className="myInput w-full"
+          required
         />
-        <MyTextArea
+        <textarea
+          type="text"
           placeholder="Ваш комментарий"
-          value={forma.comment}
-          onChange={(e) => setForma({ ...forma, comment: e.target.value })}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          className="myInput w-full h-64 "
         />
-        <div className="h-12 flex justify-center w-full">
-          <MyButton click={submit}>Отправить</MyButton>
-        </div>
+        <button type="submit" className="myButton w-full">
+          Отправить
+        </button>
       </form>
     </div>
   );

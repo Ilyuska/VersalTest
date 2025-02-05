@@ -1,4 +1,6 @@
-const PhoneInput = ({ phone, setPhone }) => {
+const PhoneInput = ({ phone, setPhone, className }) => {
+  let resClass = "myInput " + className;
+
   const handleChange = (e) => {
     // Форматирование номера телефона (например, +7 (999) 999-99-99)
     let value = e.target.value.replace(/\D/g, ""); // Убираем все нечисловые символы
@@ -24,7 +26,7 @@ const PhoneInput = ({ phone, setPhone }) => {
       maxLength={16}
       minLength={16}
       placeholder="+7 (999) 999-99-99"
-      className="myInput"
+      className={resClass}
       required
     />
   );

@@ -2,8 +2,7 @@ import axios from 'axios'
 import { projects } from "./TempAPI/OurProjects"
 import { trusts } from "./TempAPI/information"
 import { menu } from "./TempAPI/MenuItemsAPI"
-import { cart } from "./TempAPI/Cart"
-import { template } from "./TempAPI/Template"
+import { order } from './TempAPI/Order'
 
 const API_BASE_URL = "http://localhost:5173/"
 axios.defaults.baseURL = API_BASE_URL
@@ -86,10 +85,10 @@ export const completeRegisterCode = async (phoneNomber, code, name) => {
 
 //Template -- виды гостей (в них поле меню это корзина данного вида пользователя)
 
-export const getTemplate = async () => {
+export const getOrder = async () => {
     try {
         const token = localStorage.getItem('token')
-        const response = await template //axios.get('template', {headers: {Authorization: `Bearer ${token}`,},})
+        const response = await order //axios.get('order', {headers: {Authorization: `Bearer ${token}`,},})
         return response //response.data
     } catch (error){
         console.log(error)
@@ -97,38 +96,23 @@ export const getTemplate = async () => {
     }
 } 
 
-export const setTemplate = async (templateData) => { //templateData -- {id, name, quantity, menu, order}
+export const patchTemplates = async (templateData) => {
     try {
         const token = localStorage.getItem('token')
-        const response = await templateData //axios.post('template', templateData, {headers: {Authorization: `Bearer ${token}`,},})
+        const response = await templateData //axios.patch('templates', templateData, {headers: {Authorization: `Bearer ${token}`,},})
         console.log(`Добавлено ${templateData}`)
-        return response //response.data
-    } catch (error){
+    } catch (error) {
         console.log(error)
         throw error
     }
 }
 
-//Отсебятина 
-
-export const getCart = async () => {
+export const patchCart = async (item) => {
     try {
         const token = localStorage.getItem('token')
-        const response = await cart //axios.get('cart', {headers: {Authorization: `Bearer ${token}`,},})
-        return response //response.data
-    } catch (error){
-        console.log(error)
-        throw error
-    }
-}
-
-export const setCart = async (cartData) => { //cartData -- {id, dish, quantity, order}
-    try {
-        const token = localStorage.getItem('token')
-        const response = await cartData //axios.post('cart', cartData, {headers: {Authorization: `Bearer ${token}`,},})
-        console.log(`Добавлено ${cartData}`)
-        return response //response.data
-    } catch (error){
+        const response = await templateData //axios.patch('dishes', item, {headers: {Authorization: `Bearer ${token}`,},})
+        console.log(`Добавлено ${templateData}`)
+    } catch (error) {
         console.log(error)
         throw error
     }

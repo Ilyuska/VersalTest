@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 .myButton {
-  @apply w-full bg-mainGreen rounded-xl text-white text-xl py-2 font-light hover:scale-95;
+  @apply bg-mainGreen rounded-xl text-white text-xl py-2 font-light hover:scale-95;
 }
 
 .myInput {
   @apply border-2 rounded-xl p-3 bg-transparent  text-xl cursor-pointer;
+}
+
+.active {
+  @apply font-bold;
 }

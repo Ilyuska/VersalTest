@@ -20,7 +20,6 @@ const OurProjects = () => {
       }
     };
     fetchProjects();
-    console.log(Projects);
   }, []);
 
   return (

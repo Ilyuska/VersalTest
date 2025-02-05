@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { AuthContext, CartContext } from "@/context/index";
+import { AuthContext, OrderContext } from "@/context/index";
 import { NavLink } from "react-router-dom";
 import logo from "@/assets/img/logos/Logo.png";
 import phone from "@/assets/img/icons/phone.png";
@@ -16,7 +16,7 @@ import MyModalForProfile from "@/components/simple/MyModal/MyModalForProfile";
 
 const MyNavBar = () => {
   const { isAuth, login, logout, token } = useContext(AuthContext);
-  const { cart } = useContext(CartContext);
+  const { length } = useContext(OrderContext);
   const [isBurgerStatus, setBurgerStatus] = useState(false); //Открытие, закрытие бургер меню
   const [isLogModal, setLogModal] = useState(false); //Открытие, закрытие модалки со входом
   const [isUserBurger, setUserBurger] = useState(false); //Открытие, закрытие модального окна с полями "Профиль", "Мои заказы", "Выйти"
@@ -66,12 +66,12 @@ const MyNavBar = () => {
                 />
                 <span
                   className={
-                    cart.value.length > 0
+                    length > 0
                       ? "absolute -top-2 left-5 lg:left-7 text-white text-sm bg-red-500 px-2 rounded-full"
                       : "hidden"
                   }
                 >
-                  {cart.value.length}
+                  {length}
                 </span>
               </div>
             </NavLink>
