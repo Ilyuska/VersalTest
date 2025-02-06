@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { OrderContext } from "@/context/index";
 import TrashModal from "./TrashModal";
+import MyModal from "@/components/simple/MyModal/MyModal";
+import MakingOrder from "./MakingOrder";
 import Bludo from "./Bludo";
 
 import emptyCart from "@/assets/img/banners/EmptyCart.png";
@@ -9,6 +11,7 @@ import emptyCart from "@/assets/img/banners/EmptyCart.png";
 const CartItems = () => {
   const { dishes, templates, clear, length } = useContext(OrderContext);
   const [trashModal, setTrashModal] = useState(false);
+  const [orderModal, setOrderModal] = useState(false);
 
   const FromDishesToTemplates = (item, template) => {
     dishes.remove(item);
@@ -81,33 +84,18 @@ const CartItems = () => {
                 />
               ))
             )}
+            <button
+              onClick={() => setOrderModal(true)}
+              className="block  min-[1360px]:hidden myButton my-2 lg:ml-5"
+            >
+              Оформить заказ
+            </button>
           </>
         )}
       </div>
-      {/* <MyModal status={modalExchange} setStatus={setModalExchange}>
-        <div className="px-10 py-2  max-w-xs">
-          <div className="text-2xl text-center">
-            Данное блюдо уже есть у и будет просто удалено из корзины
-          </div>
-          <div className="flex justify-around">
-            <button
-              className="bg-mainGreen rounded-lg p-2 text-white hover:scale-95"
-              onClick={() => {
-                setConfirmExchange(true);
-                setModalExchange(false);
-              }}
-            >
-              Подтвердить
-            </button>
-            <button
-              className="bg-red-500 rounded-lg p-2 text-white hover:scale-95"
-              onClick={() => setModalExchange(false)}
-            >
-              Отменить
-            </button>
-          </div>
-        </div>
-      </MyModal> */}
+      <MyModal status={orderModal} setStatus={setOrderModal}>
+        <MakingOrder isModal={orderModal} />
+      </MyModal>
     </div>
   );
 };

@@ -9,12 +9,12 @@ const Cart = ({ setHeaderSettings }) => {
   }, [setHeaderSettings]);
 
   return (
-    <div className="mx-[7%] my-12 grid min-[1160px]:grid-cols-[2fr_1fr] gap-x-10">
+    <div className="mx-[7%] my-12 grid min-[1360px]:grid-cols-[2fr_1fr] gap-x-10">
       <div className="flex flex-col gap-y-16">
         <TypesOfGuests />
         <CartItems />
       </div>
-      <div className="hidden min-[1160px]:block ">
+      <div className="hidden min-[1360px]:block ">
         <MakingOrder />
       </div>
     </div>

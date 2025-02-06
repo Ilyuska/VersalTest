@@ -18,7 +18,7 @@ const Item = ({ info }) => {
   }, [addedOption]);
 
   return (
-    <div className="flex flex-col items-center justify-between h-[40vh]">
+    <div className="flex flex-col items-center justify-between h-72 lg:h-[40vh]">
       <div className="h-3/4 w-full">
         <img
           src={info.image}

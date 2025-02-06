@@ -1,10 +1,17 @@
 import { useContext } from "react";
 import { OrderContext } from "@/context/index";
 import DropMenu from "@/components/UI/DropMenu";
+import DropInfo from "@/components/UI/DropInfo";
 
-const MakingOrder = () => {
-  const { value, changeOrderType, changeDate, changeAddress, changeComment } =
-    useContext(OrderContext);
+const MakingOrder = ({ isModal }) => {
+  const {
+    value,
+    changeOrderType,
+    changeDate,
+    changeAddress,
+    changeComment,
+    totalCost,
+  } = useContext(OrderContext);
 
   const getCurrentDate = () => {
     const today = new Date();
@@ -16,7 +23,9 @@ const MakingOrder = () => {
 
   return (
     <form
-      className="grid border-2 border-mainGray rounded-3xl"
+      className={`grid  ${
+        isModal ? "" : "border-2 border-mainGray rounded-3xl"
+      }`}
       onSubmit={(e) => {
         e.preventDefault();
         console.log(
@@ -43,6 +52,7 @@ const MakingOrder = () => {
         className="myInput border-mainGray m-3"
         required
       />
+
       <input
         type="date"
         value={value.date}
@@ -51,6 +61,7 @@ const MakingOrder = () => {
         onChange={(e) => changeDate(e.target.value)}
         required
       />
+
       <input
         type="text"
         value={value.address}
@@ -59,20 +70,47 @@ const MakingOrder = () => {
         onChange={(e) => changeAddress(e.target.value)}
         required
       />
-      <div>
-        Меню (по клику показывать все тип гостя (его количество) и меню на
-        одного)
+      <div className="m-3">
+        <div className="text-center py-2 text-xl font-semibold text-white bg-mainGray rounded-t-xl ">
+          Меню
+        </div>
+        {value.templates.map((template) => (
+          <DropInfo title={template.name + " (" + template.quantity + " чел.)"}>
+            {template.menu.map((dish) => (
+              <div className="flex items-end w-full h-4 my-1">
+                <span className="truncate text-base/5 ">{dish.name}</span>
+                <span className="flex-grow border-b-2 border-dotted border-black mx-1"></span>
+                <span className="truncate text-base/4">
+                  {Number(template.quantity) * Number(dish.price)}₽
+                </span>
+              </div>
+            ))}
+          </DropInfo>
+        ))}
+        <DropInfo title="Прочее" last={true}>
+          {value.dishes.map((dish) => (
+            <div className="flex items-end w-full h-4 my-1">
+              <span className="truncate text-base/5 ">{dish.dish.name}</span>
+              <span className="flex-grow border-b-2 border-dotted border-black mx-1"></span>
+              <span className="truncate text-base/4">
+                {Number(dish.quantity) * Number(dish.dish.price)}₽
+              </span>
+            </div>
+          ))}
+        </DropInfo>
       </div>
-      <div className="text-xl text-mainGray m-3">
+      {/* <div className="text-xl text-mainGray m-3">
         Официанты (1 на 10 гостей): <span>20чел. - 10000₽</span>
-      </div>
+      </div> */}
       <textarea
         value={value.comment}
         onChange={(e) => changeComment(e.target.value)}
         placeholder="Комментарий..."
-        className="myInput border-mainGray m-3"
+        className="myInput h-48 border-mainGray m-3"
       ></textarea>
-      <div className="text-xl text-mainGray m-3">ИТОГО</div>
+      <div className="text-xl text-mainGray m-3 flex justify-between ">
+        <span>ИТОГО:</span> <span>{totalCost}₽</span>
+      </div>
       <button type="submit" className="myButton m-3">
         Оформить заказ
       </button>

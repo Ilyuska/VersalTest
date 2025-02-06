@@ -45,6 +45,21 @@ const OrderProvider = ({ children }) => {
     [order.templates]
   );
 
+  const totalCost = useMemo(() => {
+    const templates = order.templates.reduce(
+      (sum, template) =>
+        sum +
+        template.quantity *
+          template.menu.reduce((res, item) => res + item.price, 0),
+      0
+    );
+    const dishes = order.dishes.reduce(
+      (sum, item) => sum + item.dish.price * item.quantity,
+      0
+    );
+    return templates + dishes;
+  }, [order.templates, order.dishes]);
+
   const changeOrderType = (newOrderType) => {
     setOrder((prevOrder) => ({
       ...prevOrder,
@@ -230,6 +245,7 @@ const OrderProvider = ({ children }) => {
           count: changeCountMenu,
         },
         length: length,
+        totalCost: totalCost,
       }}
     >
       {children}

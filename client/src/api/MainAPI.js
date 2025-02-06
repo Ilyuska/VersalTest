@@ -88,7 +88,9 @@ export const completeRegisterCode = async (phoneNomber, code, name) => {
 export const getOrder = async () => {
     try {
         const token = localStorage.getItem('token')
-        const response = await order //axios.get('order', {headers: {Authorization: `Bearer ${token}`,},})
+        const tempOrder = localStorage.getItem(`order`)
+        // const response = await tempOrder? tempOrder: order //axios.get('order', {headers: {Authorization: `Bearer ${token}`,},})
+        const response = await order
         return response //response.data
     } catch (error){
         console.log(error)
