@@ -34,12 +34,31 @@ const Item = ({ info }) => {
           <div className="w-1/3 flex items-center justify-cente font-bold  text-xl md:text-3xl lg:text-3xl">
             {info.price}₽
           </div>
+
+          {/*Кнопка добавления в Cart*/}
           {templates.value.length == 0 ? (
-            <button
-              onClick={() => addToCart()}
-              className="w-2/3 ml-2 bg-mainGreen rounded-xl text-white py-1 font-light text-sm md:text-lg hover:scale-95"
-            >
-              Добавить
+            dishes.contains(info) ? (
+              <button
+                onClick={() => dishes.remove(info)}
+                className="w-2/3 ml-2 bg-lightMainGray rounded-xl text-mainGray border-mainGray py-1 font-light text-sm md:text-lg"
+              >
+                Добавлено
+              </button>
+            ) : (
+              <button
+                onClick={() => addToCart()}
+                className="w-2/3 ml-2 bg-mainGreen rounded-xl text-white py-1 font-light text-sm md:text-lg hover:scale-95"
+              >
+                Добавить
+              </button>
+            )
+          ) : dishes.contains(info) &&
+            templates.titles.reduce(
+              (sum, i) => templates.containsDish(i, info) && sum,
+              true
+            ) ? (
+            <button className="w-2/3 ml-2 text-center bg-lightMainGray rounded-xl text-mainGray border-mainGray py-1 pr-1  text-sm md:text-base line-clamp-1">
+              Добавлено всем
             </button>
           ) : (
             <select
@@ -50,14 +69,23 @@ const Item = ({ info }) => {
               <option disabled value="" className="bg-white w-auto">
                 Добавить...
               </option>
-              <option value="cart" className="bg-white text-black w-auto">
-                Корзина
-              </option>
-              {templates.titles.map((i) => (
-                <option value={i} className="bg-white text-black w-auto">
-                  {i}
+              {dishes.contains(info) ? (
+                <></>
+              ) : (
+                <option value="cart" className="bg-white text-black w-auto">
+                  Корзина
                 </option>
-              ))}
+              )}
+
+              {templates.titles.map((i) =>
+                templates.containsDish(i, info) ? (
+                  <></>
+                ) : (
+                  <option value={i} className="bg-white text-black w-auto">
+                    {i}
+                  </option>
+                )
+              )}
             </select>
           )}
         </div>

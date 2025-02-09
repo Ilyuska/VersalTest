@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OrderContext } from "@/context/index";
 import DropMenu from "@/components/UI/DropMenu";
 import DropInfo from "@/components/UI/DropInfo";
+import MyModal from "@/components/simple/MyModal/MyModal";
 
 const MakingOrder = ({ isModal }) => {
   const {
@@ -13,6 +14,8 @@ const MakingOrder = ({ isModal }) => {
     totalCost,
   } = useContext(OrderContext);
 
+  const [modalConfirm, setModalConfirm] = useState(false);
+
   const getCurrentDate = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -22,99 +25,120 @@ const MakingOrder = ({ isModal }) => {
   };
 
   return (
-    <form
-      className={`grid  ${
-        isModal ? "" : "border-2 border-mainGray rounded-3xl"
-      }`}
-      onSubmit={(e) => {
-        e.preventDefault();
-        console.log(
-          `Ваш заказ \n Тип мероприятия: ${value.order_type} \n Дата проведения: ${value.date} \n Адрес проведения: ${value.address} \n Комментарий: ${value.comment}`
-        );
-      }}
-    >
-      <label className="flex justify-between text-3xl font-light text-white bg-mainGray pl-7 pr-2 md:pr-5 py-3 rounded-t-2xl">
-        Оформление заказа
-      </label>
-      <DropMenu
-        value={value.order_type}
-        onChange={changeOrderType}
-        defaultValue="Тип мероприятия"
-        options={[
-          { name: "Банкет", value: "banquet" },
-          { name: "Фуршет", value: "furshet" },
-          { name: "Кофе-брейк", value: "coffe breake" },
-          { name: "Барбекю", value: "barbecue" },
-          { name: "Доставка еды", value: "delivery" },
-          { name: "Корпоративное питание", value: "meeting" },
-          { name: "Обучающее мероприятие", value: "training event" },
-        ]}
-        className="myInput border-mainGray m-3"
-        required
-      />
+    <>
+      <form
+        className={`grid  ${
+          isModal ? "" : "border-2 border-mainGray rounded-3xl"
+        }`}
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log(
+            `Ваш заказ \n Тип мероприятия: ${value.order_type} \n Дата проведения: ${value.date} \n Адрес проведения: ${value.address} \n Комментарий: ${value.comment}`
+          );
+          setModalConfirm(true);
+        }}
+      >
+        <label className="flex justify-between text-3xl font-light text-white bg-mainGray pl-7 pr-2 md:pr-5 py-3 rounded-t-2xl">
+          Оформление заказа
+        </label>
+        <DropMenu
+          value={value.order_type}
+          onChange={changeOrderType}
+          defaultValue="Тип мероприятия"
+          options={[
+            { name: "Банкет", value: "banquet" },
+            { name: "Фуршет", value: "furshet" },
+            { name: "Кофе-брейк", value: "coffe breake" },
+            { name: "Барбекю", value: "barbecue" },
+            { name: "Доставка еды", value: "delivery" },
+            { name: "Корпоративное питание", value: "meeting" },
+            { name: "Обучающее мероприятие", value: "training event" },
+          ]}
+          className="myInput border-mainGray m-3"
+          required
+        />
 
-      <input
-        type="date"
-        value={value.date}
-        min={getCurrentDate()}
-        className="myInput border-mainGray m-3"
-        onChange={(e) => changeDate(e.target.value)}
-        required
-      />
+        <input
+          type="date"
+          value={value.date}
+          min={getCurrentDate()}
+          max={"2026" + getCurrentDate().slice(4)}
+          className="myInput border-mainGray m-3"
+          onChange={(e) => changeDate(e.target.value)}
+          required
+        />
 
-      <input
-        type="text"
-        value={value.address}
-        className="myInput border-mainGray m-3"
-        placeholder="Место проведения"
-        onChange={(e) => changeAddress(e.target.value)}
-        required
-      />
-      <div className="m-3">
-        <div className="text-center py-2 text-xl font-semibold text-white bg-mainGray rounded-t-xl ">
-          Меню
-        </div>
-        {value.templates.map((template) => (
-          <DropInfo title={template.name + " (" + template.quantity + " чел.)"}>
-            {template.menu.map((dish) => (
-              <div className="flex items-end w-full h-4 my-1">
-                <span className="truncate text-base/5 ">{dish.name}</span>
-                <span className="flex-grow border-b-2 border-dotted border-black mx-1"></span>
-                <span className="truncate text-base/4">
-                  {Number(template.quantity) * Number(dish.price)}₽
-                </span>
-              </div>
-            ))}
-          </DropInfo>
-        ))}
-        <DropInfo title="Прочее" last={true}>
-          {value.dishes.map((dish) => (
-            <div className="flex items-end w-full h-4 my-1">
-              <span className="truncate text-base/5 ">{dish.dish.name}</span>
-              <span className="flex-grow border-b-2 border-dotted border-black mx-1"></span>
-              <span className="truncate text-base/4">
-                {Number(dish.quantity) * Number(dish.dish.price)}₽
-              </span>
-            </div>
+        <input
+          type="text"
+          value={value.address}
+          className="myInput border-mainGray m-3"
+          placeholder="Место проведения"
+          onChange={(e) => changeAddress(e.target.value)}
+          required
+        />
+        <div className="m-3">
+          <div className="text-center py-2 text-xl font-semibold text-white bg-mainGray rounded-t-xl ">
+            Меню
+          </div>
+          {value.templates.map((template) => (
+            <DropInfo
+              title={template.name + " (" + template.quantity + " чел.)"}
+            >
+              {template.menu.length > 0 ? (
+                template.menu.map((dish) => (
+                  <div className="flex items-end w-full h-4 my-1">
+                    <span className="truncate text-base/5 ">{dish.name}</span>
+                    <span className="flex-grow border-b-2 border-dotted border-black mx-1"></span>
+                    <span className="truncate text-base/4">
+                      {Number(template.quantity) * Number(dish.price)}₽
+                    </span>
+                  </div>
+                ))
+              ) : (
+                <div className="text-center">Пусто</div>
+              )}
+            </DropInfo>
           ))}
-        </DropInfo>
-      </div>
-      {/* <div className="text-xl text-mainGray m-3">
+          <DropInfo title="Прочее" last={true}>
+            {value.dishes.length > 0 ? (
+              value.dishes.map((dish) => (
+                <div className="flex items-end w-full h-4 my-1">
+                  <span className="truncate text-base/5 ">
+                    {dish.dish.name}
+                  </span>
+                  <span className="flex-grow border-b-2 border-dotted border-black mx-1"></span>
+                  <span className="truncate text-base/4">
+                    {Number(dish.quantity) * Number(dish.dish.price)}₽
+                  </span>
+                </div>
+              ))
+            ) : (
+              <div className="text-center">Пусто</div>
+            )}
+          </DropInfo>
+        </div>
+        {/* <div className="text-xl text-mainGray m-3">
         Официанты (1 на 10 гостей): <span>20чел. - 10000₽</span>
       </div> */}
-      <textarea
-        value={value.comment}
-        onChange={(e) => changeComment(e.target.value)}
-        placeholder="Комментарий..."
-        className="myInput h-48 border-mainGray m-3"
-      ></textarea>
-      <div className="text-xl text-mainGray m-3 flex justify-between ">
-        <span>ИТОГО:</span> <span>{totalCost}₽</span>
-      </div>
-      <button type="submit" className="myButton m-3">
-        Оформить заказ
-      </button>
-    </form>
+        <textarea
+          value={value.comment}
+          onChange={(e) => changeComment(e.target.value)}
+          placeholder="Комментарий..."
+          className="myInput h-48 border-mainGray m-3"
+        ></textarea>
+        <div className="text-xl text-mainGray m-3 flex justify-between ">
+          <span>ИТОГО:</span> <span>{totalCost}₽</span>
+        </div>
+        <button type="submit" className="myButton m-3">
+          Оформить заказ
+        </button>
+      </form>
+      <MyModal status={modalConfirm} setStatus={setModalConfirm}>
+        <div className="text-mainGray text-2xl p-5 py-8">
+          Ваш заказ успешно принят!
+        </div>
+      </MyModal>
+    </>
   );
 };
 

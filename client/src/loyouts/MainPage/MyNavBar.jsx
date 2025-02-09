@@ -23,8 +23,8 @@ const MyNavBar = () => {
   const [isProfileModal, setProfileModal] = useState(false);
 
   return (
-    <div className="absolute flex justify-between items-center text-white top-0 left-0 right-0 p-5 pr-0 lg:pr-5 z-10">
-      {/*Отрисовка базовой навигации без бургера*/}
+    <nav className="absolute flex justify-between items-center text-white top-0 left-0 right-0 p-5 pr-0 lg:pr-5 z-10">
+      {/*Отрисовка базовой навигации*/}
       <div className=" flex justify-between items-center gap-10 text-white">
         <NavLink to="/">
           <img src={logo} alt="Logo" className="h-16 md:h-24 " />
@@ -175,7 +175,7 @@ const MyNavBar = () => {
           </MyBurgerMenu>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

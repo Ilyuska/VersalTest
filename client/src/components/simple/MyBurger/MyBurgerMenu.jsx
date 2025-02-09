@@ -27,9 +27,9 @@ const MyBurgerMenu = ({ children, status, setStatus, burger }) => {
 
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative h-1/2 w-1/2 md:w-1/3 bg-mainGray px-5 rounded-l-2xl"
+        className="relative h-[350px] w-1/2 md:w-1/3 bg-mainGray px-5 rounded-l-2xl"
       >
-        <div className="flex flex-col gap-3 pt-20 text-lg md:text-2xl ">
+        <div className="flex flex-col gap-3 py-4 text-lg md:text-2xl ">
           {children}
         </div>
       </div>

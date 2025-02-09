@@ -151,7 +151,7 @@ const AdminMenu = () => {
               <input type="checkbox" className="" />
             </td>
             <td className="border border-gray-300 py-2 flex justify-center">
-              <img src={bludo.photo} alt="bludo" className="w-16 rounded" />
+              <img src={bludo.image} alt="bludo" className="w-16 rounded" />
             </td>
             <td className="border border-gray-300 px-4 py-2">{bludo.name}</td>
             <td className="border border-gray-300 px-4 py-2">

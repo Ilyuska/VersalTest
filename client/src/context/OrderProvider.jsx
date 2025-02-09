@@ -107,8 +107,8 @@ const OrderProvider = ({ children }) => {
   const changeCountMenu = (item, count) => {
     setOrder((prevOrder) => ({
       ...prevOrder,
-      dishes: prevOrder.dishes.map((dish) =>
-        dish.dish === item ? { ...dish, quantity: count } : dish
+      dishes: prevOrder.dishes.map((i) =>
+        i.dish.name === item ? { ...i, quantity: count } : i
       ),
     }));
   };
@@ -137,12 +137,12 @@ const OrderProvider = ({ children }) => {
     }));
   };
 
-  const changeTemplate = (name, quantity) => {
+  const changeTemplate = (name, newName, quantity) => {
     setOrder((prevOrder) => ({
       ...prevOrder,
       templates: prevOrder.templates.map((template) =>
         template.name === name
-          ? { ...template, quantity: quantity, name: name }
+          ? { ...template, quantity: quantity, name: newName }
           : template
       ),
     }));

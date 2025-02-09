@@ -1,18 +1,25 @@
 import { useState } from "react";
+import usePositiveInput from "../../../hooks/usePositiveIntput";
 import MyModal from "./MyModal";
 
 const MyModalForGuests = ({ status, setStatus, info, changeInfo, add }) => {
-  const [addedGuest, setAddedGuest] = useState([info.name, info.quantity]);
+  const [guestName, setGuestName] = useState(info.name);
+  const [guestQuantity, setGuestQuantity] = usePositiveInput(
+    info.quantity,
+    1,
+    5000
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (info.name) {
-      changeInfo(addedGuest[0], addedGuest[1]); // Редактирование
+      changeInfo(info.name, guestName, guestQuantity); // Редактирование
     } else {
-      add(addedGuest[0], addedGuest[1]); // Добавление
+      add(guestName, guestQuantity); // Добавление
     }
-    setAddedGuest(["", ""]);
-    setStatus(false); // Закрываем модальное окно
+    setGuestName("");
+    setGuestQuantity("");
+    setStatus(false);
   };
 
   return (
@@ -26,18 +33,18 @@ const MyModalForGuests = ({ status, setStatus, info, changeInfo, add }) => {
         </label>
         <div className="col-span-1 text-xl">Тип гостя:</div>
         <input
-          disabled={!!info.name}
           className="myInput col-span-2"
-          value={addedGuest[0]}
-          onChange={(e) => setAddedGuest([e.target.value, addedGuest[1]])}
+          value={guestName}
+          onChange={(e) => setGuestName(e.target.value)}
           required
         />
         <div className="col-span-1 text-xl">Количество:</div>
         <input
           className="myInput col-span-2"
-          type="number"
-          value={addedGuest[1]}
-          onChange={(e) => setAddedGuest([addedGuest[0], e.target.value])}
+          type="text"
+          value={guestQuantity}
+          onChange={(e) => setGuestQuantity(e.target.value)}
+          required
         />
         <div className="col-span-3 grid grid-cols-2 gap-2">
           <button className="myButton" type="submit">

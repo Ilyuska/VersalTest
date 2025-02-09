@@ -46,8 +46,9 @@ const MyModal = ({ children, status, setStatus }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative bg-white rounded-2xl shadow-lg transition-transform transform duration-300 ease-in-out scale-100"
+        className="relative bg-white rounded-2xl shadow-lg transition-transform transform duration-300 ease-in-out scale-100 max-h-[95vh]  overflow-y-auto"
       >
+        {/* Кнопка закрытия */}
         <span
           onClick={() => {
             setStatus(false);
