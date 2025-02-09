@@ -8,15 +8,8 @@ const OrderProvider = ({ children }) => {
     date: "",
     address: "",
     comment: "",
-    templates: [
-      // {name: "VIP", quantity: 100, menu: [menu[3], menu[4]] },
-      // {name: "Children", quantity: 40, menu: [menu[4], menu[6]]},
-    ],
-    dishes: [
-      // {dish: menu[1], quantity: 100},
-      // {dish: menu[2], quantity: 10},
-      // {dish: menu[6], quantity: 50}
-    ],
+    templates: [],
+    dishes: [],
   });
 
   useEffect(() => {
@@ -217,6 +210,17 @@ const OrderProvider = ({ children }) => {
     }));
   };
 
+  const resetOrder = () => {
+    setOrder({
+      order_type: "",
+      date: "",
+      address: "",
+      comment: "",
+      templates: [],
+      dishes: [],
+    });
+  };
+
   return (
     <OrderContext.Provider
       value={{
@@ -246,6 +250,7 @@ const OrderProvider = ({ children }) => {
         },
         length: length,
         totalCost: totalCost,
+        reset: resetOrder,
       }}
     >
       {children}
