@@ -8,10 +8,11 @@ import Bludo from "./Bludo";
 
 import emptyCart from "@/assets/img/banners/EmptyCart.png";
 
-const CartItems = () => {
+const CartItems = ({ status, setStatus }) => {
   const { dishes, templates, clear, length } = useContext(OrderContext);
   const [trashModal, setTrashModal] = useState(false);
   const [orderModal, setOrderModal] = useState(false);
+  // const [modalConfirm, setModalConfirm] = useState(false);
 
   const FromDishesToTemplates = (item, template) => {
     dishes.remove(item);
@@ -94,7 +95,11 @@ const CartItems = () => {
         )}
       </div>
       <MyModal status={orderModal} setStatus={setOrderModal}>
-        <MakingOrder isModal={orderModal} />
+        <MakingOrder
+          isModal={orderModal}
+          setModal={setOrderModal}
+          setModalConfirm={setStatus}
+        />
       </MyModal>
     </div>
   );

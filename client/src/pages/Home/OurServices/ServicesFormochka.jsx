@@ -1,6 +1,6 @@
 const ServicesFormochka = ({ pict, title }) => {
   return (
-    <div className="relative w-4/5 h-[15vh] lg:h-[25vh] text-white rounded-2xl mb-8 mx-auto text-center text-sm md:text-base lg:text-lg hover:scale-105 transition-transform duration-300">
+    <div className="relative w-4/5 h-32 lg:h-52 text-white rounded-2xl mb-8 mx-auto text-center text-sm md:text-base lg:text-lg hover:scale-105 transition-transform duration-300">
       <img
         className="rounded-2xl w-full h-full object-cover"
         src={pict}

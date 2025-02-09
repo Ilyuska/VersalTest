@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const NotFound = ({ page }) => {
   return (
-    <div className="flex flex-col justify-center items-center gap-3 my-20 text-center">
+    <div className="flex flex-col justify-center items-center gap-5 my-20 text-center">
       <div className="text-mainGray text-9xl">404</div>
       <div className="text-mainGray text-4xl">Page not found</div>
       <Link

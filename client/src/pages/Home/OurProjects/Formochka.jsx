@@ -7,7 +7,7 @@ const Formochka = ({ project }) => {
   return (
     <>
       <div
-        className="relative w-4/5 h-[17vh] lg:h-[25vh] text-white rounded-2xl mb-8 mx-auto text-sm md:text-base lg:text-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+        className="relative w-4/5 h-32 lg:h-52 text-white rounded-2xl mb-8 mx-auto text-sm md:text-base lg:text-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
         onClick={() => setIsOpen(true)}
       >
         <img

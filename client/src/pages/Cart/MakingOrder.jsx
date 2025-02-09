@@ -4,7 +4,7 @@ import DropMenu from "@/components/UI/DropMenu";
 import DropInfo from "@/components/UI/DropInfo";
 import MyModal from "@/components/simple/MyModal/MyModal";
 
-const MakingOrder = ({ isModal }) => {
+const MakingOrder = ({ isModal, setModal, setModalConfirm }) => {
   const {
     value,
     changeOrderType,
@@ -13,8 +13,6 @@ const MakingOrder = ({ isModal }) => {
     changeComment,
     totalCost,
   } = useContext(OrderContext);
-
-  const [modalConfirm, setModalConfirm] = useState(false);
 
   const getCurrentDate = () => {
     const today = new Date();
@@ -36,6 +34,7 @@ const MakingOrder = ({ isModal }) => {
             `Ваш заказ \n Тип мероприятия: ${value.order_type} \n Дата проведения: ${value.date} \n Адрес проведения: ${value.address} \n Комментарий: ${value.comment}`
           );
           setModalConfirm(true);
+          setModal(false);
         }}
       >
         <label className="flex justify-between text-3xl font-light text-white bg-mainGray pl-7 pr-2 md:pr-5 py-3 rounded-t-2xl">
@@ -133,11 +132,6 @@ const MakingOrder = ({ isModal }) => {
           Оформить заказ
         </button>
       </form>
-      <MyModal status={modalConfirm} setStatus={setModalConfirm}>
-        <div className="text-mainGray text-2xl p-5 py-8">
-          Ваш заказ успешно принят!
-        </div>
-      </MyModal>
     </>
   );
 };

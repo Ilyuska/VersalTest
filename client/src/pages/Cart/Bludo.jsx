@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { OrderContext } from "@/context/index";
 import trash from "@/assets/img/icons/trash.png";
 
 const Bludo = ({
@@ -13,6 +14,7 @@ const Bludo = ({
   nowTemplate,
   allTemplates,
 }) => {
+  const { dishes, templates } = useContext(OrderContext);
   const [selectedTemplate, setSelectedTemplate] = useState(nowTemplate);
   const [isCart, setIsCart] = useState(isDishes);
   const [cartValue, setCartValue] = useState(dishesValue);
@@ -76,12 +78,22 @@ const Bludo = ({
                 selectedTemplate == "cart" ? "col-span-2" : "col-span-3"
               }`}
             >
-              <option value="cart">Свое:</option>
-              {allTemplates.map((template) => (
-                <option key={template} value={template}>
-                  {template}
-                </option>
-              ))}
+              {dishes.contains(info) && !isDishes ? (
+                <></>
+              ) : (
+                <option value="cart">Свое:</option>
+              )}
+
+              {allTemplates.map((template) =>
+                templates.containsDish(template, info) &&
+                template !== selectedTemplate ? (
+                  <></>
+                ) : (
+                  <option key={template} value={template}>
+                    {template}
+                  </option>
+                )
+              )}
             </select>
 
             <input
